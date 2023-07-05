@@ -1,0 +1,24 @@
+extends ../parts/doctype
+
+//- block vars
+//- 	- const demoImg = '.jpg'
+
+block head
+	title #{title}
+	link(rel="stylesheet" href="/css/app.css")
+
+block body
+
+	- const imgPath = '/images/other/'
+
+	#wrapper
+
+		include ../parts/header
+
+		main#main
+			block content
+
+		include ../parts/footer
+		include ../parts/popups
+
+	include ../parts/scripts
