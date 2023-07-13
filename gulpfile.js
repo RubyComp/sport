@@ -36,7 +36,7 @@ const minifyJs = () => {
 };
 
 const copyFiles = () => {
-	return gulp.src(['src/fonts/**/*', 'src/images/**/*'], { base: 'src' })
+	return gulp.src(['src/resources/**/*'], { base: 'src' })
 		.pipe(gulp.dest('dist/'))
 		.pipe(livereload());
 };

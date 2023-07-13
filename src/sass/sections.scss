@@ -1,0 +1,62 @@
+.hero {
+
+	&-section {
+		align-items: center;
+		background-image:
+			url($imgPath + 'graphics/shirts.png'),
+			url($imgPath + 'graphics/lines.svg');
+		// background-position: center, center -22vh;
+		// background-position: center, center -210px;
+		background-position: center, center calc(-11vw + (1920px - 100vw) * 0.15);
+		background-size: 1440px, 140vw;
+		background-repeat: no-repeat;
+		height: 121vh;
+		padding-top: 54px;
+		text-align: center;
+
+	}
+
+	&__note {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__title {
+		display: flex;
+		flex-direction: column;
+		gap: 2.15rem;
+		justify-content: center;
+		align-items: center;
+
+		h1 {
+			display: inline-block;
+			max-width: 680px;
+			text-align: center;
+		}
+	}
+
+	&__advantages {
+		backdrop-filter: blur(15px);
+		background: rgba(255, 255, 255, 0.05);
+		border-image: linear-gradient(to bottom, #F3F3F3, #323232) 1;
+		border-style: solid;
+		border-width: 1px;
+		display: flex;
+		gap: 2rem;
+		margin-top: 38vh;
+		max-width: 1012px;
+		padding: 2.2em 3em;
+
+		> section {
+			font-size: 19px;
+		}
+
+	}
+	&__footer {
+		font-size: 14px;
+		margin-top: 1.6rem;
+		opacity: .75;
+		max-width: 240px;
+	}
+}

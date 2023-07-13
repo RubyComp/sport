@@ -1,13 +1,22 @@
-header#header
-	div
-		.site-logo
-	div
-		nav
-			ul
-				li Экипировка
-				li Спортивная одежда
-				li Повседневная одежда
-				li Аксессуары
-	div
+header.header
+	div.header__logo
+		img.site-logo(src=imgPath + "logo.svg")
+	nav.header__nav
+		ul
+			li 
+				a(href="#").header__link
+					span Экипировка
+			li 
+				a(href="#").header__link
+					span Спортивная одежда
+			li 
+				a(href="#").header__link
+					span Повседневная одежда
+			li 
+				a(href="#").header__link
+					span Аксессуары
+		//- ul
+		//- 	li +
+	div.header__actions
 		.tel
 			include ../modules/tel
