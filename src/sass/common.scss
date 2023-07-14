@@ -38,7 +38,9 @@ body {
 	@include md {
 		font-size: 10px;
 	}
-
+	@include sm-and-less {
+		padding: 8px;
+	}
 	// @include sm {
 	// 	--header-height: 60px;
 	// 	background-color: coral;
@@ -60,6 +62,15 @@ body {
 		transition: padding-top .15s;
 		padding-top: var(--logo-top-fix);
 		margin-left: 18px;
+		@include sm-and-less {
+			margin-left: 12px;
+			.site-logo {
+				width: 71px;
+			}
+		}
+		// @include xs {
+		// 	margin-left: 0;
+		// }
 	}
 	&__nav {
 		height: 100%;
@@ -123,5 +134,41 @@ body {
 	&__actions {
 		padding-top: 3px;
 		color: var(--accent-colot);
+		@include sm-and-less {
+			display: none;
+		}
+	}
+
+	&__burger {
+		@include more-than-sm {
+			display: none;
+		}
+	}
+}
+
+#burger {
+	border-radius: 6px;
+	cursor: pointer;
+	height: 41px;
+	position: relative;
+	width: 42px;
+
+	i {
+		background-color: var(--light-color);
+		display: block;
+		height: 1px;
+		left: 12px;
+		position: absolute;
+		width: 18px;
+
+		&:nth-child(1) {
+			top: 15px;
+		}
+		&:nth-child(2) {
+			top: 21px;
+		}
+		&:nth-child(3) {
+			top: 27px;
+		}
 	}
 }

@@ -27,7 +27,12 @@
 			background-image: url($shirts);
 			padding-top: 42px;
 			background-size: 590px;
-			background-position: center 82px,
+		}
+		@include sm {
+			background-position: center 82px;
+		}
+		@include xs {
+			background-position: center 118px;
 		}
 	}
 
@@ -38,11 +43,11 @@
 	}
 
 	&__title {
+		align-items: center;
 		display: flex;
 		flex-direction: column;
 		gap: 2.15rem;
 		justify-content: center;
-		align-items: center;
 
 		h1 {
 			display: inline-block;
@@ -50,8 +55,11 @@
 			text-align: center;
 		}
 
-		@include sm-and-less {
+		@include sm {
 			max-width: 540px;
+		}
+		@include xs {
+			max-width: 360px;
 		}
 	}
 
@@ -81,10 +89,20 @@
 			padding: 2.1em 2em 2em;
 			grid-gap: 2rem;
 		}
-		@include sm-and-less {
+		@include sm {
 			margin-top: 150px;
 			grid-gap: .25rem;
 			padding: 1.4em 2.5em;
+		}
+		@include xs {
+			margin-top: 110px;
+			grid-gap: 1.5rem 1rem;
+			padding: 1.2em 4.6em;
+			grid-template-columns: 1fr 1fr;
+		}
+		@include xxs {
+			grid-gap: 1rem .8rem;
+			padding: 1.2em 2em;
 		}
 
 	}
@@ -95,6 +113,11 @@
 		margin-top: 1.2rem;
 		max-width: 220px;
 		opacity: .75;
+		@include sm-and-less {
+			font-size: 12px;
+			max-width: 180px;
+			margin-top: 1rem;
+		}
 	}
 
 	&__desktop-actions {
@@ -104,11 +127,15 @@
 	}
 
 	&__mobile-actions {
-		grid-column-start: 1;
 		grid-column-end: 5;
+		grid-column-start: 1;
 		padding-top: 2.4rem;
 		@include more-than-sm {
 			display: none;
+		}
+		@include xs {
+			grid-column-end: 3;
+			padding-top: 0;
 		}
 	}
 }

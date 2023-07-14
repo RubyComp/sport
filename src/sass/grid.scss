@@ -42,7 +42,7 @@ $xxs: $xxs-grid + $fix;
 }
 
 @mixin xs {
-	@include media-base($xs, $sm) {
+	@include media-base(0, $sm) {
 		@content;
 	}
 }
