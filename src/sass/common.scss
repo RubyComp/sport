@@ -16,26 +16,76 @@ $imgPath: '/resources/images/';
 
 /**/
 
+$hpx: 0.5px;
+
+@mixin media-base($min, $max) {
+
+	@media only screen
+		and (min-width: $min)
+		and (max-width: calc($max - $hpx)) {
+
+		@content;
+
+	}
+}
+
+@mixin lg {
+	@media only screen and (min-width: $lg) {
+		@content;
+	}
+}
+
+@mixin md {
+	@include media-base($md, $lg) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@include media-base($sm, $md) {
+		@content;
+	}
+}
+
+@mixin xs {
+	@include media-base($xs, $sm) {
+		@content;
+	}
+}
+
+@mixin xxs {
+	@include media-base(0px, $xs) {
+		@content;
+	}
+}
+
+
 .container {
 	margin: 0 auto;
-	width: $lg-grid;
-	// background-color: grey;
 
-	@media only screen and (max-width: ($lg)) {
+	@include lg {
+		background-color: grey;
+		width: $lg-grid;
+	}
+
+	@include md {
+		background-color: coral;
 		width: $md-grid;
-		// background-color: coral;
 	}
-	@media only screen and (max-width: ($md)) {
+
+	@include sm {
+		background-color: steelblue;
 		width: $sm-grid;
-		// background-color: steelblue;
 	}
-	@media only screen and (max-width: ($sm)) {
+
+	@include xs {
+		background-color: forestgreen;
 		width: $xs-grid;
-		// background-color: forestgreen;
 	}
-	@media only screen and (max-width: ($xs)) {
+
+	@include xxs {
+		background-color: hotpink;
 		width: $xxs-grid;
-		// background-color: hotpink;
 	}
 }
 
@@ -111,7 +161,7 @@ h6 {
 	font-size: 10px;
 }
 
-@media only screen and (max-width: $sm) {
+@mixin sm {
 	h1 {
 		font-size: 30px;
 	}
@@ -131,6 +181,7 @@ h6 {
 		font-size: 10px;
 	}
 }
+
 
 .btn {
 	--btn-color: var(--grey-color);
