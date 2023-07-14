@@ -8,7 +8,7 @@ block content
 	section.hero-section
 		div.container.hero__title
 			h1 Пошив спортивной одежды для любого вида спорта
-			div
+			div.hero__desktop-actions
 				a(href="").btn.btn_primary
 					span Заказать экипировку
 
@@ -28,11 +28,15 @@ block content
 				section
 					div
 						img(src=imgPath + "icons/honey.svg", alt="")
-					div Лояльные цены на всю продукцию
+					div Материалы премиум качества
 				section
 					div
 						img(src=imgPath + "icons/layers.svg", alt="")
-					div Лояльные цены на всю продукцию
+					div Собственное производство
+				section.hero__mobile-actions
+					div
+						a(href="").btn.btn_primary
+							span Заказать экипировку
 			footer.hero__footer
 				| * Бесплатная доставка по&nbsp;России от&nbsp;50&nbsp;000&nbsp;₽
 

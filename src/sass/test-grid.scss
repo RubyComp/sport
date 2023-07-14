@@ -1,0 +1,54 @@
+$fix: 40px;
+
+$lg-grid: 1360px;
+$md-grid: 960px;
+$sm-grid: 600px;
+$xs-grid: 440px;
+$xxs-grid: 320px;
+
+$lg: $lg-grid + $fix;
+$md: $md-grid + $fix;
+$sm: $sm-grid + $fix;
+$xs: $xs-grid + $fix;
+$xxs: $xxs-grid + $fix;
+
+@mixin media-base($min, $max) {
+
+	@media only screen
+		and (min-width: $min)
+		and (max-width: calc($max - 0.2px)) {
+
+		@content;
+
+	}
+}
+
+@mixin lg {
+	@media only screen and (min-width: $lg) {
+		@content;
+	}
+}
+
+@mixin md {
+	@include media-base($md, $lg) {
+		@content;
+	}
+}
+
+@mixin sm {
+	@include media-base($sm, $md) {
+		@content;
+	}
+}
+
+@mixin xs {
+	@include media-base($xs, $sm) {
+		@content;
+	}
+}
+
+@mixin xxs {
+	@include media-base(0px, $xs) {
+		@content;
+	}
+}

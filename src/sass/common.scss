@@ -1,124 +1,3 @@
-$fix: 40px;
-
-$lg-grid: 1360px;
-$md-grid: 960px;
-$sm-grid: 600px;
-$xs-grid: 440px;
-$xxs-grid: 320px;
-
-$lg: $lg-grid + $fix;
-$md: $md-grid + $fix;
-$sm: $sm-grid + $fix;
-$xs: $xs-grid + $fix;
-$xxs: $xxs-grid + $fix;
-
-$imgPath: '/resources/images/';
-
-/**/
-
-$hpx: 0.5px;
-
-@mixin media-base($min, $max) {
-
-	@media only screen
-		and (min-width: $min)
-		and (max-width: calc($max - $hpx)) {
-
-		@content;
-
-	}
-}
-
-@mixin lg {
-	@media only screen and (min-width: $lg) {
-		@content;
-	}
-}
-
-@mixin md {
-	@include media-base($md, $lg) {
-		@content;
-	}
-}
-
-@mixin sm {
-	@include media-base($sm, $md) {
-		@content;
-	}
-}
-
-@mixin xs {
-	@include media-base($xs, $sm) {
-		@content;
-	}
-}
-
-@mixin xxs {
-	@include media-base(0px, $xs) {
-		@content;
-	}
-}
-
-
-.container {
-	margin: 0 auto;
-
-	@include lg {
-		background-color: grey;
-		width: $lg-grid;
-	}
-
-	@include md {
-		background-color: coral;
-		width: $md-grid;
-	}
-
-	@include sm {
-		background-color: steelblue;
-		width: $sm-grid;
-	}
-
-	@include xs {
-		background-color: forestgreen;
-		width: $xs-grid;
-	}
-
-	@include xxs {
-		background-color: hotpink;
-		width: $xxs-grid;
-	}
-}
-
-/**/
-
-// @mixin t1 {
-// 	font-family: var(--accent-font);
-// 	line-height: 150%;
-// }
-
-:root {
-	--back-color: #111;
-	--accent-colot: #FB3B11;
-	--accent-colot-soft: #FB3B114D;
-	--dark-color: #161615;
-	--grey-color: #383838;
-	--light-grey-color: #8B8B8B;
-	--light-color: #F1F1F1;
-	--silver-gradient: linear-gradient(140deg, #323232 0%, #F3F3F3 100%);
-
-	--text-color: var(--light-color);
-
-	--accent-font: 'Kharkiv-Tone', 'roboto', 'arial';
-	--main-font: 'Inter', 'roboto', 'arial';
-}
-
-* {
-	list-style: none;
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
-
 
 body {
 	background-color: var(--back-color);
@@ -126,135 +5,60 @@ body {
 	color: var(--text-color);
 	font-family: var(--main-font);
 }
-a {
-	color: inherit;
+
+#wrapper {
+	margin-top: var(--header-height);
 }
-
-
-/**/
-
-h1, h2, h3, h4, h5, h6 {
-	font-family: var(--accent-font);
-	line-height: 120%;
-	text-transform: uppercase;
-}
-
-h1 {
-	font-size: 45px;
-	font-weight: 400;
-	// letter-spacing: -2%;
-}
-h2 {
-	font-size: 35px;
-	// letter-spacing: -2%;
-}
-h3 {
-	font-size: 25px;
-}
-h4 {
-	font-size: 18px;
-}
-h5 {
-	font-size: 12px;
-}
-h6 {
-	font-size: 10px;
-}
-
-@mixin sm {
-	h1 {
-		font-size: 30px;
-	}
-	h2 {
-		font-size: 20px;
-	}
-	h3 {
-		font-size: 14px;
-	}
-	h4 {
-		font-size: 10px;
-	}
-	h5 {
-		font-size: 10px;
-	}
-	h6 {
-		font-size: 10px;
-	}
-}
-
-
-.btn {
-	--btn-color: var(--grey-color);
-	border: 1px solid var(--btn-color);
-	font-size: 12px;
-	text-decoration: none;
-	text-transform: uppercase;
-	letter-spacing: 0.01em;
-	padding: 1.9em 3.1em 1.6em ;
-	font-family: var(--accent-font);
-	display: inline-block;
-	position: relative;
-	overflow: hidden;
-
-
-	&_primary {
-		--btn-color: var(--accent-colot);
-		--move: -250%;
-		z-index: 0;
-
-		&::before,
-		&::after {
-			background-color: var(--accent-colot);
-			content: '';
-			height: 100%;
-			left: 0;
-			position: absolute;
-			transition: .32s;
-			width: 100%;
-			z-index: -1;
-		}
-
-		&::before {
-			bottom: 0;
-		}
-		&::after {
-			bottom: var(--move);
-		}
-
-		&:hover {
-			&::before {
-				transform: translateY(var(--move));
-			}
-			&::after {
-				transform: translateY(var(--move));
-			}
-		}
-
-	}
-}
-
-/**/
 
 .header {
+	--logo-top-fix: 8px;
 	align-items: center;
+	background-color: var(--back-color);
 	border-bottom: 1px solid var(--grey-color);
 	display: flex;
 	font-family: var(--accent-font);
 	font-size: 11px;
-	height: 68px;
+	height: var(--header-height);
 	justify-content: space-between;
+	left: 0;
 	letter-spacing: 0.026em;
 	padding: 0 24px 0;
-	position: relative;
+	position: fixed;
 	text-transform: uppercase;
+	top: 0;
+	transition: height .15s;
+	width: 100%;
+	z-index: 3;
+
+	&_compact {
+		--logo-top-fix: 6px;
+		height: 48px;
+	}
+
+	@include md {
+		font-size: 10px;
+	}
+
+	// @include sm {
+	// 	--header-height: 60px;
+	// 	background-color: coral;
+	// }
+	// @include xs {
+	// 	--header-height: 60px;
+	// 	background-color: lawngreen;
+	// }
+	// @include xss {
+	// 	--header-height: 60px;
+	// 	background-color: hotpink;
+	// }
 
 	a {
 		text-decoration: none;
 	}
 
-
 	&__logo {
-		padding-top: 8px;
+		transition: padding-top .15s;
+		padding-top: var(--logo-top-fix);
 		margin-left: 18px;
 	}
 	&__nav {
@@ -265,6 +69,9 @@ h6 {
 		transform: translate(-50%, -50%);
 		white-space: nowrap;
 
+		@include sm-and-less {
+			display: none;
+		}
 		> ul {
 			align-items: center;
 			display: flex;

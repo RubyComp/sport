@@ -1,19 +1,34 @@
 .hero {
+	$shirts: $imgPath + 'graphics/shirts.png';
+	$lines: $imgPath + 'graphics/lines.svg';
 
 	&-section {
 		align-items: center;
 		background-image:
-			url($imgPath + 'graphics/shirts.png'),
-			url($imgPath + 'graphics/lines.svg');
-		// background-position: center, center -22vh;
-		// background-position: center, center -210px;
-		background-position: center, center calc(-11vw + (1920px - 100vw) * 0.15);
-		background-size: 1440px, 140vw;
+			url($shirts),
+			url($lines);
+		background-position:
+			center 190px,
+			center calc(-11vw + (1920px - 100vw) * 0.15);
+		background-size:
+			1440px,
+			140vw;
 		background-repeat: no-repeat;
-		height: 121vh;
+		height: 1060px;
 		padding-top: 54px;
 		text-align: center;
 
+		@include md {
+			background-position:
+				center 190px,
+				center calc(-11vw + (1920px - 100vw) * 0.25);
+		}
+		@include sm-and-less {
+			background-image: url($shirts);
+			padding-top: 42px;
+			background-size: 590px;
+			background-position: center 82px,
+		}
 	}
 
 	&__note {
@@ -34,6 +49,10 @@
 			max-width: 680px;
 			text-align: center;
 		}
+
+		@include sm-and-less {
+			max-width: 540px;
+		}
 	}
 
 	&__advantages {
@@ -42,21 +61,54 @@
 		border-image: linear-gradient(to bottom, #F3F3F3, #323232) 1;
 		border-style: solid;
 		border-width: 1px;
-		display: flex;
-		gap: 2rem;
-		margin-top: 38vh;
-		max-width: 1012px;
-		padding: 2.2em 3em;
+		display: grid;
+		grid-gap: 3.4rem;
+		grid-template-columns: repeat(4,1fr);
+		justify-content: space-between;
+		margin-top: 370px;
+		max-width: 1056px;
+		padding: 2.2em 1.35em;
 
 		> section {
 			font-size: 19px;
+			line-height: 1.55em;
+			@include sm-and-less {
+				font-size: 12px;
+				line-height: 1.55em;
+			}
+		}
+		@include md {
+			padding: 2.1em 2em 2em;
+			grid-gap: 2rem;
+		}
+		@include sm-and-less {
+			margin-top: 150px;
+			grid-gap: .25rem;
+			padding: 1.4em 2.5em;
 		}
 
 	}
+
 	&__footer {
 		font-size: 14px;
-		margin-top: 1.6rem;
+		line-height: 1.45em;
+		margin-top: 1.2rem;
+		max-width: 220px;
 		opacity: .75;
-		max-width: 240px;
+	}
+
+	&__desktop-actions {
+		@include sm-and-less {
+			display: none;
+		}
+	}
+
+	&__mobile-actions {
+		grid-column-start: 1;
+		grid-column-end: 5;
+		padding-top: 2.4rem;
+		@include more-than-sm {
+			display: none;
+		}
 	}
 }

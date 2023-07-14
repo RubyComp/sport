@@ -1,0 +1,42 @@
+$imgPath: '/resources/images/';
+
+:root {
+	--back-color: #111;
+	--accent-colot: #FB3B11;
+	--accent-colot-soft: #FB3B114D;
+	--dark-color: #161615;
+	--grey-color: #383838;
+	--light-grey-color: #8B8B8B;
+	--light-color: #F1F1F1;
+	--silver-gradient: linear-gradient(140deg, #323232 0%, #F3F3F3 100%);
+
+	--text-color: var(--light-color);
+
+	--accent-font: 'Kharkiv-Tone', 'roboto', 'arial';
+	--main-font: 'Inter', 'roboto', 'arial';
+
+	--header-height: 68px;
+
+
+	@include sm {
+		--header-height: 60px;
+	}
+	@include xs {
+		--header-height: 60px;
+	}
+}
+
+*,
+*::before,
+*::after {
+	border: initial;
+	box-sizing: border-box;
+	color: inherit;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+::selection {
+	background-color: var(--light-grey-color)
+}
