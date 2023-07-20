@@ -147,3 +147,21 @@ strong {
 
 	}
 }
+
+.dark-form {
+	input[type=text] {
+		background: none;
+		border: 1px solid var(--grey-color);
+		padding: 1.4em 1.1em 1.2em;
+		font-size: 14px;
+		font-family: var(--accent-font);
+	}
+	input[type=submit] {
+		background-color: var(--grey-color);
+		padding: 1.46em 1.1em 1.28em;
+		font-size: 14px;
+		font-family: var(--accent-font);
+		text-transform: uppercase;
+		color: var(--light-grey-color);
+	}
+}

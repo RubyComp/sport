@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', function () {
 	console.log('Scripts');
 
+	/**/
+
 	const HEADER = 'header'
 	const COMPACT = HEADER + '_compact'
 
@@ -98,5 +100,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	carousel.addEventListener('mouseleave', dragStop);
 	carousel.addEventListener('touchend', dragStop);
 
-})
 
+	/**/
+
+
+})

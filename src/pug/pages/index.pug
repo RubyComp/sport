@@ -51,42 +51,42 @@ block content
 		div.container
 			div.tech__list
 				section.tech__item
-					div
-						img(src=imgPath + "icons/strong-check.svg", alt="")
-					div.tech__title Высокая прочность
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/strong-check.svg", alt="")
+						.tech__title Высокая прочность
 					div Ткань специально разработанна для того, чтобы выдерживать суровые условия интенсивной физической активности
 
 				section.tech__item
-					div
-						img(src=imgPath + "icons/waves.svg", alt="")
-					div.tech__title Эластичность
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/waves.svg", alt="")
+						.tech__title Эластичность
 					div Сохранять форму и&nbsp;эластичность даже после многократного использования в&nbsp;тяжелых условиях и&nbsp;стирки
 
 				section.tech__item
-					div
-						img(src=imgPath + "icons/hexagon.svg", alt="")
-					div.tech__title Функциональсть
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/hexagon.svg", alt="")
+						.tech__title Функциональсть
 					div Подходит для высокоинтенсивных видов спорта, таких как бег, тяжелая атлетика, футбол и&nbsp;контактные виды спорта
 
 				section.tech__item
-					div
-						img(src=imgPath + "icons/particles.svg", alt="")
-					div.tech__title Современные пропитки
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/particles.svg", alt="")
+						.tech__title Современные пропитки
 					div Пропитка повышает эксплуатационные характеристики материала, делая его прочным, водостойким и&nbsp;дышащим
 
 				section.tech__item
-					div
-						img(src=imgPath + "icons/up.svg", alt="")
-					div.tech__title Термо регуляция
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/up.svg", alt="")
+						.tech__title Термо регуляция
 					div Ткань специально разработана для регулирования температуры тела во&nbsp;время физических нагрузок
 
 				section.tech__item
-					div
-						img(src=imgPath + "icons/air.svg", alt="")
-					div.tech__title Быстрое высыхание
+					.tech__header
+						img.tech__icon(src=imgPath + "icons/air.svg", alt="")
+						.tech__title Быстрое высыхание
 					div Ткань отводить влагу и&nbsp;сохраняет прохладу и&nbsp;комфорт во&nbsp;время интенсивных тренировок
 
-	section
+	section.man-section
 		div.container.man-icons
 			img(src=imgPath + "icons/mans/man-1.svg", alt="")
 			img(src=imgPath + "icons/mans/man-2.svg", alt="")
@@ -99,154 +99,145 @@ block content
 			img(src=imgPath + "icons/mans/man-9.svg", alt="")
 			img(src=imgPath + "icons/mans/man-10.svg", alt="")
 			img(src=imgPath + "icons/mans/man-11.svg", alt="")
-		div.btn-line
-			.btn.btn_primary Выбрать экипировку
+		.container.btn-line
+			a.btn.btn_primary(href="") Выбрать экипировку
 
-	section
+	section.examples-section
 		div.container
 			h2.focus-title Примеры <br>работы
-		div.test
-			div
-				div
-					div
-					div
-				div
-					div
-						picture
-							img(src=imgPath + "promo/promo-photo-1.jpg", alt="")
-					div
-						picture
-							img(src=imgPath + "promo/promo-photo-2.jpg", alt="")
-					div
-						picture
-							img(src=imgPath + "/promo/promo-photo-3.jpg", alt="")
-					div
-						picture
-							img(src=imgPath + "/promo/promo-photo-4.jpg", alt="")
-					div
-						picture
-							img(src=imgPath + "/promo/promo-photo-5.jpg", alt="")
+		div.examples__slider
+			picture
+				img(src=imgPath + "promo/promo-photo-1.jpg", alt="")
+			picture
+				img(src=imgPath + "promo/promo-photo-2.jpg", alt="")
+			picture
+				img(src=imgPath + "promo/promo-photo-3.jpg", alt="")
+			picture
+				img(src=imgPath + "promo/promo-photo-4.jpg", alt="")
+			picture
+				img(src=imgPath + "promo/promo-photo-5.jpg", alt="")
 
-	section
+	section.steps-section
 		div.container
-			h2.focus-title От&nbsp;идеи до реализации
+			h2.focus-title От&nbsp;идеи до <br>реализации
 
 		div.container
-			div
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 1
-						div Запрос
+			div.steps__list
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/blank.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 1
+						.steps__title Запрос
 						div Получаем от&nbsp;вас запрос, согласовываем наименование и&nbsp;количество изделий
 
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 2
-						div дизайн
-						div По&nbsp;необходимости, разрабатываем дизайн учитывая фирменный стиль вашей организации/команды.
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/picture-warn.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 2
+						.steps__title дизайн
+						div По&nbsp;необходимости, разрабатываем дизайн учитывая фирменный стиль вашей организации/команды
 
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 3
-						div Утверждение
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/picture-check.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 3
+						.steps__title Утверждение
 						div Утверждаем дизайн макет, согласовываем материалы и&nbsp;виды нанесений
 
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 4
-						div договор
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/doc-check.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 4
+						.steps__title договор
 						div Выставляем счет, заключаем договор
 
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 5
-						div примерка
-						div Отшиваем один образец со&nbsp;всеми нанесениями в&nbsp;готовом виде
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/hanger.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 5
+						.steps__title примерка
+						div Отшиваем один образец со&nbsp;всеми нанесениями&nbsp;в&nbsp;готовом виде
 
-				section
-					div
-						img(src="", alt="")
-					div
-						div Шаг 6
-						div изготовление
+				section.steps__item
+					.steps__head
+						.steps__icon
+							img(src=imgPath + "icons/layers-check.svg", alt="")
+					.steps__info
+						.steps__subtitle Шаг 6
+						.steps__title изготовление
 						div Утверждаем образец, шьем всю партию
+		.container.btn-line
+			a.btn.btn_primary(href="") Оставить заявку
 
-		div.container
-			div
-				a(href="").btn.btn_primary Заказать экипировку
-
-	section
-		div.container
+	section.about-section
+		article.container
 			header
-				img(src="", alt="")
-			aside
-				img(src="", alt="")
-			div
-				h2 Создаем действительно качественный продукт, который поможет вам в&nbsp;спорте
-			div Essko&nbsp;— компания по&nbsp;производству спортивной одежды на&nbsp;заказ, которая предлагает высококачественную и&nbsp;стильную спортивную одежду для команд, школ и&nbsp;отдельных лиц. Обладая более чем 10-летним опытом работы в&nbsp;отрасли, они заработали репутацию производителя первоклассных продуктов и&nbsp;предоставления исключительного обслуживания клиентов.
-			div
+				img(src=imgPath + "graphics/legal-advantage-text.svg", alt="Legal Advantage")
+			h2.about__title Создаем действительно качественный продукт, который поможет вам в&nbsp;спорте
+			.about__text
+				p Essko&nbsp;— компания по&nbsp;производству спортивной одежды на&nbsp;заказ, которая предлагает высококачественную и&nbsp;стильную спортивную одежду для команд, школ и&nbsp;отдельных лиц. Обладая более чем <nobr>10-летним</nobr> опытом работы в&nbsp;отрасли, они заработали репутацию производителя первоклассных продуктов и&nbsp;предоставления исключительного обслуживания клиентов.
+			.about__achievements
 				section
-					div 12
-					div Лет работы
+					header 12
+					footer Лет работы
 				section
-					div >30
-					div Крупных проектов
+					header >30
+					footer Крупных проектов
 				section
-					div 18
-					div Крупных проектов
+					header 18
+					footer Крупных проектов
 
 
-	section
-		div.container
-			div
-				div
-					form(action="")
-						div
-							div Получите скидку до&nbsp;40% для детских школ, академий или спортивных организация
-							div Оставьте заявку и&nbsp;получите скидку до&nbsp;40% на&nbsp;первый заказ + бесплатный дизайн принта
-						div
-							div
-								div Скидка действует
-								div 00:00:02:59
-							div
-								input(type="text" placeholder="имя")
-								input(type="text" placeholder="эл. почта")
-								input(type="text" placeholder="телефон")
-							div
-								input(type="submit" value="Получить скидку" disabled)
-							div
-								small
-									| Нажимая кнопку «Получить скидку» вы соглашаетесь с&nbsp;
-									a Политикой конфиденциальности
+	section.form-section
+		.container.form__block
+			form.form__main.dark-form(action="")
+				header.form__header
+					.form__title
+						| Получите 
+						b скидку до&nbsp;40%
+						|  для детских школ, академий или спортивных организация
+					.form__subtitle Оставьте заявку и&nbsp;получите скидку до&nbsp;40% на&nbsp;первый заказ + бесплатный дизайн принта
+				div.form__fields
+					.timer
+						.timer__title Скидка действует
+						.timer__value 00:00:02:59
 
-				div
-					img(src="", alt="")
+					input(type="text" placeholder="имя")
+					input(type="text" placeholder="эл. почта")
+					input(type="text" placeholder="телефон")
+					input(type="submit" value="Получить скидку" disabled)
 
-	section
+					div.form__legal
+						small
+							| Нажимая кнопку «Получить скидку» вы соглашаетесь с&nbsp;
+							a Политикой конфиденциальности
+			.form__aside
+				//- img(src=imgPath + "graphics/sale-40.svg", alt="Скидка 40%")
+
+	section.faq-section
 		div.container
 			h2.focus-title Часто задаваемые вопросы
 
 		div.container
-			div
-				section
-					div Какой срок производства заказа?
-					div Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки ( от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
-				section
-					div Как происходит разработка дизайна?
-					div Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
-				section
-					div Стоимость доставки?
-					div Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
-				section
-					div Как оплатить заказ?
-					div Вы&nbsp;можете оплатить заказ по&nbsp;счету на&nbsp;юридические реквизиты компании.Оплату можно производить от&nbsp;физических и&nbsp;юридических лиц.Наши менеджеры проконсультируют, как удобней производить оплату и&nbsp;подготовят необходимую документацию.
+			section
+				div Какой срок производства заказа?
+				div Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки ( от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
+			section
+				div Как происходит разработка дизайна?
+				div Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
+			section
+				div Стоимость доставки?
+				div Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
+			section
+				div Как оплатить заказ?
+				div Вы&nbsp;можете оплатить заказ по&nbsp;счету на&nbsp;юридические реквизиты компании.Оплату можно производить от&nbsp;физических и&nbsp;юридических лиц.Наши менеджеры проконсультируют, как удобней производить оплату и&nbsp;подготовят необходимую документацию.

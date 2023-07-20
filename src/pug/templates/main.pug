@@ -11,14 +11,16 @@ block body
 
 	- const imgPath = '/resources/images/'
 
-	#wrapper
+	#scroll
 
-		include ../parts/header
+		#wrapper
 
-		main#main
-			block content
+			include ../parts/header
 
-		include ../parts/footer
-		include ../parts/popups
+			main#main
+				block content
+
+			include ../parts/footer
+			include ../parts/popups
 
 	include ../parts/scripts

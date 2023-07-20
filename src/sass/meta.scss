@@ -12,6 +12,8 @@ $imgPath: '/resources/images/';
 	--carbon-gradient: linear-gradient(180deg, #1C1C1C 0%, #111 50.00%);
 	--text-color: var(--light-color);
 
+	--silver-line: linear-gradient(90deg, rgba(255, 255, 255, 0.00) 0%, #FFF 52.60%, rgba(217, 217, 217, 0.00) 99.99%);
+
 	--accent-font: 'Kharkiv-Tone', 'roboto', 'arial';
 	--main-font: 'Inter', 'roboto', 'arial';
 
@@ -38,7 +40,7 @@ $imgPath: '/resources/images/';
 }
 
 ::selection {
-	background-color: var(--light-grey-color)
+	background-color: #9c9da057;
 }
 
 .test img {
