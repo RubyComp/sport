@@ -107,7 +107,7 @@ body {
 		position: relative;
 
 		&::before {
-			background-color: var(--accent-colot);
+			background-color: var(--accent-color);
 			content: '';
 			height: 100%;
 			left: 0;
@@ -133,7 +133,7 @@ body {
 
 	&__actions {
 		padding-top: 3px;
-		color: var(--accent-colot);
+		color: var(--accent-color);
 		@include sm-and-less {
 			display: none;
 		}

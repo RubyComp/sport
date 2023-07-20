@@ -2,14 +2,14 @@ $imgPath: '/resources/images/';
 
 :root {
 	--back-color: #111;
-	--accent-colot: #FB3B11;
-	--accent-colot-soft: #FB3B114D;
+	--accent-color: #FB3B11;
+	--accent-color-soft: #FB3B114D;
 	--dark-color: #161615;
 	--grey-color: #383838;
 	--light-grey-color: #8B8B8B;
 	--light-color: #F1F1F1;
 	--silver-gradient: linear-gradient(140deg, #323232 0%, #F3F3F3 100%);
-
+	--carbon-gradient: linear-gradient(180deg, #1C1C1C 0%, #111 50.00%);
 	--text-color: var(--light-color);
 
 	--accent-font: 'Kharkiv-Tone', 'roboto', 'arial';
@@ -39,4 +39,8 @@ $imgPath: '/resources/images/';
 
 ::selection {
 	background-color: var(--light-grey-color)
+}
+
+.test img {
+	width: 100px;
 }

@@ -1,0 +1,85 @@
+.carousel-wrapper {
+	// max-width: 1200px;
+	align-items: flex-end;
+	display: flex;
+	justify-content: center;
+	margin: auto;
+	position: relative;
+	width: $lg-grid;
+
+	@include lg {
+		width: $lg-grid;
+	}
+	@include md {
+		width: $md-grid;
+	}
+	@include sm-and-less {
+		width: 100%;
+	}
+}
+
+
+.carousel-wrapper .carousel {
+	--item-width: 1fr;
+	cursor: pointer;
+	overflow: hidden;
+	scroll-behavior: smooth;
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, var(--item-width));
+
+	@include md {
+		--item-width: 320px;
+	}
+	@include sm-and-less {
+		--item-width: 340px
+	}
+}
+
+.carousel.dragging {
+	cursor: grab;
+	scroll-behavior: auto;
+}
+
+.carousel.dragging section {
+	pointer-events: none;
+}
+
+.carousel section {
+	// margin-left: 14px;
+	// object-fit: cover;
+	// width: 250px;
+	// box-shadow: inset 0px 0px 20px black;
+
+	display: inline-flex;
+	height: 669px;
+	width: 100%;
+
+	@include md {
+		height: 550px;
+	}
+	@include sm-and-less {
+		height: 460px;
+	}
+
+	// > * {
+	// 	width: 100%;
+	// }
+}
+
+.carousel section+section {
+	border-width: 1px 1px 1px 0;
+}
+
+// @media screen and (max-width: $sm) {
+// 	.carousel section {
+// 		width: calc(100% / 2);
+// 	}
+// }
+
+// @media screen and (max-width: $xs) {
+// 	.carousel section {
+// 		width: 100%;
+// 		background-color: teal !important;
+// 	}
+// }
