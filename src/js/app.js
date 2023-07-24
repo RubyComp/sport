@@ -102,6 +102,42 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 	/**/
+	const sections = document.querySelectorAll('.faq__section');
 
+		// Разворачиваем первую секцию при загрузке страницы
+		if (sections.length > 0) {
+			sections[0].classList.add('active');
+			const firstAnswer = sections[0].querySelector('.faq__answer');
+			firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
+		}
+	
+		function collapseAllExceptActive(activeSection) {
+			sections.forEach((section) => {
+				if (section !== activeSection) {
+					section.classList.remove('active');
+					section.querySelector('.faq__answer').style.maxHeight = null;
+				}
+			});
+		}
+	
+		function toggleAccordion() {
+			const answer = this.nextElementSibling;
+			const isActive = this.parentNode.classList.contains('active');
+		
+			collapseAllExceptActive(this.parentNode);
+		
+			if (isActive) {
+				this.parentNode.classList.remove('active');
+				answer.style.maxHeight = null;
+			} else {
+				this.parentNode.classList.add('active');
+				answer.style.maxHeight = answer.scrollHeight + 'px';
+			}
+		}
+	
+		sections.forEach((section) => {
+		const question = section.querySelector('.faq__question');
+		question.addEventListener('click', toggleAccordion);
+	});
 
 })
