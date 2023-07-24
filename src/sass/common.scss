@@ -173,3 +173,34 @@ body {
 		}
 	}
 }
+
+.callback {
+	align-items: center;
+	background: linear-gradient(90deg, #323232 0%, rgba(243, 243, 243, 0.00) 100%);
+	display: grid;
+	grid-template-columns: 2fr 1fr 1fr;
+	margin-top: 10rem;
+	padding: 3.5rem 3.4rem 3.25rem;
+
+	&__title {
+		font-size: 25px;
+		font-family: var(--accent-font);
+		text-transform: uppercase;
+		padding-right: 9rem;
+		line-height: 1.3em;
+	}
+
+	&__tel {
+		font-size: 18px;
+		font-family: var(--accent-font);
+		a {
+			text-decoration: none;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+	&__btn {
+		justify-self: end;
+	}
+}
