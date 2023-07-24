@@ -1,3 +1,47 @@
 footer#footer
 	include ../modules/callback
-	div Footer
+	.container.footer
+		.footer__promo
+			img.site-logo(src=imgPath + "logo.svg")
+			small 162605, Россия, г. Краснодар, <br>ул. Кремлевская 1, стр. 7, офис 54
+
+		.footer__main
+			nav.footer__nav
+
+				section
+					header Контакты
+					ul
+						li
+							include ../modules/tel.pug
+						li
+							a(href="") Essko@.com
+						li
+							a(href="") VKontakte
+						li
+							a(href="") Telegram
+						li
+							a(href="") Whatsapp
+
+				section
+					header Услуги
+					ul
+						li
+							a(href="") Экипировка
+						li
+							a(href="") Спортивная одежда
+						li
+							a(href="") Повседневная одежда
+
+				section
+					header О компании
+					ul
+						li
+							a(href="") О нас
+						li
+							a(href="") Доставка и возврат
+						li
+							a(href="") Соглашение
+
+			.footer__legal
+				span © Essko 2023
+				a(href="") Политика конфиденциальности
