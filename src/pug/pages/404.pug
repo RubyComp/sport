@@ -1,0 +1,12 @@
+extends ../templates/simply
+
+block vars
+	- const title = 'Страница не найдена'
+
+block content
+	div.not-found
+		img(src=imgPath + "graphics/404.svg", alt="404")
+		h1 страница не найдена
+		p Похоже эта страница не работает :(
+		a(href="/").btn.btn_primary
+			span На главную

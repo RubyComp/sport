@@ -95,3 +95,8 @@ $xxs: $xxs-grid + $fix;
 		width: $xxs-grid;
 	}
 }
+
+.double-colums {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}

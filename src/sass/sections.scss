@@ -63,6 +63,13 @@
 		}
 	}
 
+	&__icon {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin-bottom: .3rem;
+	}
 	&__advantages {
 		backdrop-filter: blur(15px);
 		background: rgba(255, 255, 255, 0.05);
@@ -421,6 +428,8 @@
 		background-repeat: no-repeat;
 		margin-top: 9.5rem;
 		padding-bottom: 9.6rem;
+		z-index: -1;
+		position: relative;
 	}
 	&__title {
 		-webkit-background-clip: text;
@@ -482,7 +491,24 @@
 		border: 1px solid var(--form-border-color);
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		
+		position: relative;
+
+		&:before {
+			background-color: #8B8B8B;
+			border-radius: 863px;
+			content: '';
+			display: block;
+			filter: blur(250px);
+			height: 55%;
+			left: 50%;
+			pointer-events: none;
+			position: absolute;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			user-select: none;
+			width: 55%;
+			z-index: -1;
+		}
 	}
 	&__main {
 		border-right: 1px solid var(--form-border-color);
@@ -535,6 +561,7 @@
 			color: var(--accent-color);
 		}
 	}
+
 }
 
 .timer {

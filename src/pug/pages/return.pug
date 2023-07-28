@@ -1,0 +1,21 @@
+extends ../templates/common
+
+block vars
+	- const title = 'Возврат'
+
+block content
+
+	.container.form-page
+		header.form-page__header
+			h1 У вас появились проблемы с заказом?
+			p Заполните данные и&nbsp;наш менеджер свяжется с&nbsp;вами для уточнения деталей
+		form(action="").dark-form
+			input(type="text" placeholder="Имя")
+			input(type="email" placeholder="Эл. почта")
+			input(type="tel" placeholder="Телефон")
+			textarea(name="", rows="10" placeholder="Кратко опишите вашу проблему" maxlength="10000")
+			span Загрузить фото (до 6 Мб)
+			input(type="file")
+			input(type="submit" value="Отправить")
+			footer.form-note Нажимая кнопку «Отправить» вы соглашаетесь с&nbsp;
+				a(href="/") Политикой конфиденциальности

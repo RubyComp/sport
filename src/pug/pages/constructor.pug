@@ -1,0 +1,118 @@
+extends ../templates/common
+
+block vars
+	- const title = 'Комплекты футбольной формы'
+
+block content
+	.container.double-colums
+		aside.product-preview
+			picture.product-preview__picture
+				img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
+			div.product-preview__total
+				div.product-preview__price
+					section
+						span Стоимость комплекта
+						b 1&nbsp;500&nbsp;₽
+					section
+						span Общая стоимость
+						b 31&nbsp;500&nbsp;₽
+				button.btn.btn_primary Отправить Запрос
+				footer.product-preview__note Указана предварительная стоимость, окончательную стоимость рассчитает наш менеджер
+
+		div.product-form
+			h1.focus-title #{title}
+			.faq__block
+				section.faq__section
+					.faq__question Описание
+					.faq__answer Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
+				section.faq__section
+					.faq__question Технологии
+					.faq__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
+				section.faq__section
+					.faq__question Размерная сетка
+					.faq__answer Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
+
+			form.dark-form(action="")
+
+				fieldset.text-radio
+					legend Гендер
+					.text-radio__buttons
+						input(type="radio", name="gender", id="gender-man")
+						label(for="gender-man")
+							span Мужская
+						input(type="radio", name="gender", id="gender-women")
+						label(for="gender-women")
+							span Женская
+
+				fieldset.text-radio
+					legend Возраст
+					.text-radio__buttons
+						input(type="radio", name="age", id="age-child")
+						label(for="age-child")
+							span Дети
+						input(type="radio", name="age", id="age-adult")
+						label(for="age-adult")
+							span Взрослые
+
+				fieldset.number
+					legend Количество комплектов
+
+				fieldset.text-radio.text-radio_footered
+					legend Вид формы
+					.text-radio__buttons
+						input(type="radio", name="type", id="type-training")
+						label(for="type-training")
+							span Training
+							footer от 800₽
+						input(type="radio", name="type", id="type-pro")
+						label(for="type-pro")
+							span Pro
+							footer от 1500₽
+						input(type="radio", name="type", id="type-game")
+						label(for="type-game")
+							span Game
+							footer от 1200₽
+
+				fieldset.text-radio
+					legend Рукав
+					.text-radio__buttons
+						input(type="radio", name="arm", id="arm-short")
+						label(for="arm-short")
+							span Короткий
+						input(type="radio", name="arm", id="arm-long")
+						label(for="arm-long")
+							span Длинный
+
+				fieldset.text-radio.text-radio_footered
+					legend Требуется разработать дизайн
+					.text-radio__buttons
+						input(type="radio", name="design", id="design-yes")
+						label(for="design-yes")
+							span Да
+							footer +800₽
+						input(type="radio", name="design", id="design-no")
+						label(for="design-no")
+							span Нет
+
+				fieldset.number
+					legend Загрузите свой дизайн
+
+				fieldset.text-checkboxes.text-checkboxes_footered
+					legend Добавьте к комплектации
+					.text-checkboxes__buttons
+						input(type="checkbox", name="design", id="design-yes")
+						label(for="design-yes")
+							span Гетры
+							footer +800₽
+						input(type="checkbox", name="design", id="design-no")
+						label(for="design-no")
+							span Сумка
+							footer +1200₽
+						input(type="checkbox", name="design", id="design-yes")
+						label(for="design-yes")
+							span Вымпел
+							footer +800₽
+						input(type="checkbox", name="design", id="design-no")
+						label(for="design-no")
+							span Шевроны
+							footer +1200₽

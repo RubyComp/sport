@@ -1,8 +1,5 @@
 extends ../parts/doctype
 
-//- block vars
-//- 	- const demoImg = '.jpg'
-
 block head
 	title #{title}
 	link(rel="stylesheet" href="/css/app.css")
@@ -17,8 +14,5 @@ block body
 
 		main#main
 			block content
-
-		include ../parts/footer
-		include ../parts/popups
 
 	include ../parts/scripts
