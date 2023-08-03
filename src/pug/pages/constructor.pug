@@ -6,18 +6,19 @@ block vars
 block content
 	.container.double-colums
 		aside.product-preview
-			picture.product-preview__picture
-				img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
-			div.product-preview__total
-				div.product-preview__price
-					section
-						span Стоимость комплекта
-						b 1&nbsp;500&nbsp;₽
-					section
-						span Общая стоимость
-						b 31&nbsp;500&nbsp;₽
-				button.btn.btn_primary Отправить Запрос
-				footer.product-preview__note Указана предварительная стоимость, окончательную стоимость рассчитает наш менеджер
+			div.product-preview__box
+				picture.product-preview__picture
+					img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
+				div.product-preview__total
+					div.product-preview__price
+						section
+							span Стоимость комплекта
+							b 1&nbsp;500&nbsp;₽
+						section
+							span Общая стоимость
+							b 31&nbsp;500&nbsp;₽
+					button.btn.btn_primary Отправить Запрос
+					footer.product-preview__note Указана предварительная стоимость, окончательную стоимость рассчитает наш менеджер
 
 		div.product-form
 			h1.focus-title #{title}
@@ -30,7 +31,36 @@ block content
 					.accordion__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
 				section.accordion__section
 					.accordion__question Размерная сетка
-					.accordion__answer Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
+					.accordion__answer
+						table.simply-table
+							thead
+								tr
+									th(width="23%") Рост
+									th(width="30%") Обхват груди
+									th(width="31%") Обхват бедер
+									th(width="27%") Размер
+							tbody
+								tr
+									td 104
+									td 56
+									td 60,6
+									td 28
+								tr
+									td 110
+									td 58
+									td 63,0
+									td 28-30
+								tr
+									td 116
+									td 60
+									td 65,3
+									td 30
+								tr
+									td 122
+									td 62
+									td 68,0
+									td 30-32
+
 
 			form.dark-form(action="").constructor
 
@@ -101,15 +131,22 @@ block content
 				fieldset.number
 					legend Загрузите свой дизайн
 
+					label.file-drop(for="files-design")
+						.file-drop__box
+							.file-drop__msg Перетащите файлы сюда, чтобы загрузить…
+							.file-drop__btn Выбрать
+							input.file-drop__input(type="file" id="files-design" multiple)
+						.file-drop__note png, jpg, jpeg, bmp, pdf, zip, rar, tar, doc, docx
+
 				fieldset.text-select
 					legend Виды материалов
 					.text-select
 						.text-select__input
 							input.text-select__field(type="text" placeholder="Выберите материал" readonly)
 						.text-select__options
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Первый материал
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Второй материал
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Третий материал
 
 				fieldset.text-checkboxes.text-checkboxes_footered
 					legend Добавьте к комплектации
@@ -130,4 +167,5 @@ block content
 						label(for="extra-chevrons")
 							span Шевроны
 							footer +1200₽
+
 	script(src="/js/constructor.js")

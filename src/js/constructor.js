@@ -86,4 +86,29 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	})
 
+	// File drop
+
+	// const $fileInput = $('.file-input');
+	// const $droparea = $('.file-drop-area');
+
+	// $fileInput.on('dragenter focus click', function() {
+	// 	$droparea.addClass('is-active');
+	// });
+
+	// $fileInput.on('dragleave blur drop', function() {
+	// 	$droparea.removeClass('is-active');
+	// });
+
+	// $fileInput.on('change', function() {
+	// 	const filesCount = $(this)[0].files.length;
+	// 	const $textContainer = $(this).prev();
+
+	// 	if (filesCount === 1) {
+	// 		const fileName = $(this).val().split('\\').pop();
+	// 		$textContainer.text(fileName);
+	// 	} else {
+	// 		$textContainer.text(filesCount + ' files selected');
+	// 	}
+	// });
+
 })
