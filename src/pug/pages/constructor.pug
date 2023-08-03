@@ -2,6 +2,7 @@ extends ../templates/common
 
 block vars
 	- const title = 'Комплекты футбольной формы'
+	- const files = '.png, .jpg, .jpeg, .bmp, .pdf, .zip, .rar, .tar, .doc, .docx'
 
 block content
 	.container.double-colums
@@ -13,10 +14,10 @@ block content
 					div.product-preview__price
 						section
 							span Стоимость комплекта
-							b 1&nbsp;500&nbsp;₽
+							b#single-price 1&nbsp;500&nbsp;₽
 						section
 							span Общая стоимость
-							b 31&nbsp;500&nbsp;₽
+							b#total-price 31&nbsp;500&nbsp;₽
 					button.btn.btn_primary Отправить Запрос
 					footer.product-preview__note Указана предварительная стоимость, окончательную стоимость рассчитает наш менеджер
 
@@ -62,25 +63,27 @@ block content
 									td 30-32
 
 
-			form.dark-form(action="").constructor
+			form.dark-form(action="").constructor#constructor
+
+				input(type="hidden" name="base-cost" data-cost="0" id="base-cost")
 
 				fieldset.text-radio
 					legend Гендер
 					.text-radio__buttons
-						input(type="radio", name="gender", id="gender-man")
+						input(type="radio", name="gender", id="gender-man" data-cost="0")
 						label(for="gender-man")
 							span Мужская
-						input(type="radio", name="gender", id="gender-women")
+						input(type="radio", name="gender", id="gender-women" data-cost="0")
 						label(for="gender-women")
 							span Женская
 
 				fieldset.text-radio
 					legend Возраст
 					.text-radio__buttons
-						input(type="radio", name="age", id="age-child")
+						input(type="radio", name="age", id="age-child" data-cost="0")
 						label(for="age-child")
 							span Дети
-						input(type="radio", name="age", id="age-adult")
+						input(type="radio", name="age", id="age-adult" data-cost="0")
 						label(for="age-adult")
 							span Взрослые
 
@@ -88,21 +91,21 @@ block content
 					legend Количество комплектов
 					.number__input
 						input(type="button", value="–" class="decrease-numb")
-						input(type="number" min="1" value="1")
+						input(type="number" min="1" value="1" name="count" id="count")
 						input(type="button", value="+"  class="increase-numb")
 
 				fieldset.text-radio.text-radio_footered
 					legend Вид формы
 					.text-radio__buttons.text-radio__buttons_triple
-						input(type="radio", name="type", id="type-training")
+						input(type="radio", name="type", id="type-training" data-cost="800")
 						label(for="type-training")
 							span Training
 							footer от 800₽
-						input(type="radio", name="type", id="type-pro")
+						input(type="radio", name="type", id="type-pro" data-cost="1500" checked)
 						label(for="type-pro")
 							span Pro
 							footer от 1500₽
-						input(type="radio", name="type", id="type-game")
+						input(type="radio", name="type", id="type-game" data-cost="1200")
 						label(for="type-game")
 							span Game
 							footer от 1200₽
@@ -110,60 +113,61 @@ block content
 				fieldset.text-radio
 					legend Рукав
 					.text-radio__buttons
-						input(type="radio", name="arm", id="arm-short")
+						input(type="radio", name="arm", id="arm-short" data-cost="0")
 						label(for="arm-short")
 							span Короткий
-						input(type="radio", name="arm", id="arm-long")
+						input(type="radio", name="arm", id="arm-long" data-cost="0")
 						label(for="arm-long")
 							span Длинный
 
 				fieldset.text-radio.text-radio_footered
 					legend Требуется разработать дизайн
 					.text-radio__buttons
-						input(type="radio", name="design", id="design-yes")
+						input(type="radio", name="design", id="design-yes" data-cost="800")
 						label(for="design-yes")
 							span Да
 							footer +800₽
-						input(type="radio", name="design", id="design-no")
+						input(type="radio", name="design", id="design-no" data-cost="0")
 						label(for="design-no")
 							span Нет
 
 				fieldset.number
-					legend Загрузите свой дизайн
+					legend Загрузите свой дизайн 
+						small (если есть)
 
 					label.file-drop(for="files-design")
-						.file-drop__box
+						.file-drop__box#file-drop__box
 							.file-drop__msg Перетащите файлы сюда, чтобы загрузить…
 							.file-drop__btn Выбрать
-							input.file-drop__input(type="file" id="files-design" multiple)
-						.file-drop__note png, jpg, jpeg, bmp, pdf, zip, rar, tar, doc, docx
+							input.file-drop__input(type="file" id="files-design" multiple accept=files)
+						.file-drop__note #{files}
 
 				fieldset.text-select
 					legend Виды материалов
 					.text-select
 						.text-select__input
-							input.text-select__field(type="text" placeholder="Выберите материал" readonly)
+							input.text-select__field(type="text" placeholder="Выберите материал" readonly data-cost="0")
 						.text-select__options
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Первый материал
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Второй материал
-							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Третий материал
+							.option(data-value="Первый материал" data-cost="0") Первый материал
+							.option(data-value="Второй материал" data-cost="100") Второй материал
+							.option(data-value="Третий материал" data-cost="200") Третий материал
 
 				fieldset.text-checkboxes.text-checkboxes_footered
 					legend Добавьте к комплектации
 					.text-checkboxes__buttons
-						input(type="checkbox", name="extra", id="extra-gaiters")
+						input(type="checkbox", name="extra", id="extra-gaiters" data-cost="800")
 						label(for="extra-gaiters")
 							span Гетры
 							footer +800₽
-						input(type="checkbox", name="extra", id="extra-bad")
+						input(type="checkbox", name="extra", id="extra-bad" data-cost="1200")
 						label(for="extra-bad")
 							span Сумка
 							footer +1200₽
-						input(type="checkbox", name="extra", id="extra-pennant")
+						input(type="checkbox", name="extra", id="extra-pennant" data-cost="800")
 						label(for="extra-pennant")
 							span Вымпел
 							footer +800₽
-						input(type="checkbox", name="extra", id="extra-chevrons")
+						input(type="checkbox", name="extra", id="extra-chevrons" data-cost="1200")
 						label(for="extra-chevrons")
 							span Шевроны
 							footer +1200₽

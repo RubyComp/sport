@@ -252,12 +252,11 @@ strong {
 	}
 	legend {
 		color: var(--light-grey-color);
+		font-size: 19px;
+		margin-bottom: .75rem;
 	}
 	> fieldset {
 		margin-top: 2rem;
-	}
-	legend {
-		margin-bottom: .75rem;
 	}
 	.text-radio,
 	.text-checkboxes {
@@ -396,8 +395,15 @@ strong {
 			justify-content: center;
 			padding: 2rem;
 			position: relative;
+			color: var(--light-grey-color);
 	
 			background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23666' stroke-width='1' stroke-dasharray='8%2c 8' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+
+			&--highlight {
+				background-color: #323232;
+				color: var(--text-color);
+
+			}
 		}
 
 		&__input {
@@ -415,8 +421,9 @@ strong {
 
 		&__btn {
 			background-color: var(--grey-color);
-			padding: .5rem 1rem;
+			color: var(--light-grey-color);
 			font-size: 14px;
+			padding: .5rem 1rem;
 		}
 
 		&__note {
@@ -424,9 +431,8 @@ strong {
 			text-align: center;
 			margin-top: .25rem;
 		}
-		&__msg {
-			color: var(--light-grey-color);
-		}
+		// &__msg {
+		// }
 	}
 
 }

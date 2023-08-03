@@ -588,5 +588,9 @@
 .faq {
 	&-section {
 		margin-top: 9.2rem;
+
+		.accordion__block {
+			margin-top: 3.4rem;
+		}
 	}
 }
