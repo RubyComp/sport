@@ -5,8 +5,9 @@ block vars
 
 block content
 	div.not-found
-		img(src=imgPath + "graphics/404.svg", alt="404")
-		h1 страница не найдена
-		p Похоже эта страница не работает :(
+		img.not-found__(src=imgPath + "graphics/404.svg", alt="404")
+		div.not-found__text
+			h1 страница не&nbsp;найдена
+			p Похоже эта страница не&nbsp;работает :(
 		a(href="/").btn.btn_primary
 			span На главную
