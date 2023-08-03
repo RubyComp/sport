@@ -162,6 +162,11 @@ strong {
 
 .dark-form {
 
+	--input-compact-height: 50px;
+	--focus-outline: 1px solid var(--light-grey-color);
+	--input-border: 1px solid var(--grey-color);
+	--input-font: var(--accent-font);
+
 	input[type=date],
 	input[type=datetime],
 	input[type=email],
@@ -175,15 +180,61 @@ strong {
 	input[type=time],
 	input[type=url],
 	input[type=week],
+	.option,
 	.text-radio label,
 	.text-checkboxes label,
 	textarea {
 		background: none;
-		border: 1px solid var(--grey-color);
-		font-family: var(--accent-font);
+		border: var(--input-border);
+		font-family: var(--input-font);
 		font-size: 14px;
 		padding: 1.4em 1.1em 1.2em;
 	}
+
+	input[type=number] {
+		text-align: center;
+		&::-webkit-outer-spin-button,
+		&::-webkit-inner-spin-button {
+			-webkit-appearance: none;
+			margin: 0;
+		}
+	}
+
+	.number {
+		&__input {
+			display: flex;
+			width: 100%;
+		}
+		input[type="button"] {
+			background: none;
+			border: var(--input-border);
+			cursor: pointer;
+			height: var(--input-compact-height);
+			width: var(--input-compact-height);
+			z-index: 1;
+			&:focus {
+				outline: var(--focus-outline);
+			}
+
+			&:first-of-type {
+				border-right: none;
+			}
+			&:last-of-type {
+				border-left: none;
+			}
+		}
+		input[type="number"] {
+			border: var(--input-border);
+			background: none;
+			flex-grow: 1;
+			height: var(--input-compact-height);
+			&:focus {
+				outline: var(--focus-outline);
+			}
+		}
+	}
+
+
 	textarea {
 		max-height: 45em;
 		min-height: 10em;
@@ -230,6 +281,9 @@ strong {
 			justify-content: center;
 			position: relative;
 			padding: .6em .6em .55em;
+			&:focus {
+				outline: var(--focus-outline);
+			}
 
 			footer {
 				bottom: -50%;
@@ -245,10 +299,16 @@ strong {
 			display: flex;
 			flex-wrap: wrap;
 			gap: 2.5rem 0;
+
 			label {
 				flex-basis: 50%;
 				flex-grow: 1;
 				text-align: center;
+			}
+			&_triple {
+				label {
+					flex-basis: 33.33%;
+				}
 			}
 		}
 	}
@@ -256,7 +316,83 @@ strong {
 		color: var(--accent-color);
 		text-decoration: none;
 	}
+
+	.text-select {
+		font-size: 19px;
+
+		&__input {
+			position: relative;
+			position: relative;
+			color: inherit;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 100%;
+			justify-content: center;
+
+			input {
+				align-items: center;
+				background: none;
+				border: var(--input-border);
+				display: flex;
+				height: var(--input-compact-height);
+				position : relative;
+				width: 100%;
+				z-index: 1;
+				padding-top: .5rem;
+				padding-bottom: .5rem;
+				font-size: inherit;
+	
+				&:focus {
+					outline: var(--focus-outline);
+				}
+	
+				&:hover{
+					cursor: pointer;
+				}
+			}
+			&:after{
+				background-image: url($imgPath + 'icons/chevron.svg');
+				background-repeat: no-repeat;
+				background-position: center;
+				content: '';
+				font-size: 25px;
+				height: 16px;
+				position : absolute;
+				right: 20px;
+				text-align: center;
+				width: 16px;
+				z-index: 0;
+			}
+		}
+		.option {
+			align-items: center;
+			cursor: pointer;
+			display: flex;
+			font-size: 19px;
+			height: var(--input-compact-height);
+			margin-top: -1px;
+			padding-bottom: .44rem;
+			padding-top: .56rem;
+
+			&:hover {
+				background-color: var(--accent-color);
+				transition: .2s;
+			}
+		}
+	}
+
 }
+.text-select__options {
+	overflow: hidden;
+	transition: max-height 0.3s;
+}
+
+
+.constructor {
+	--input-font: inherit;
+}
+
 
 .product-preview {
 

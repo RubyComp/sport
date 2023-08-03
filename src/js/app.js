@@ -106,13 +106,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	/**/
-	const sections = document.querySelectorAll('.faq__section');
+	const sections = document.querySelectorAll('.accordion__section');
 
 	if (sections) {
 
 		if (sections.length > 0) {
 			sections[0].classList.add('active');
-			const firstAnswer = sections[0].querySelector('.faq__answer');
+			const firstAnswer = sections[0].querySelector('.accordion__answer');
 			firstAnswer.style.maxHeight = firstAnswer.scrollHeight + 'px';
 		}
 	
@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			sections.forEach((section) => {
 				if (section !== activeSection) {
 					section.classList.remove('active');
-					section.querySelector('.faq__answer').style.maxHeight = null;
+					section.querySelector('.accordion__answer').style.maxHeight = null;
 				}
 			});
 		}
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	
 		sections.forEach((section) => {
-			const question = section.querySelector('.faq__question');
+			const question = section.querySelector('.accordion__question');
 			question.addEventListener('click', toggleAccordion);
 		});
 	}

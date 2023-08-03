@@ -21,18 +21,18 @@ block content
 
 		div.product-form
 			h1.focus-title #{title}
-			.faq__block
-				section.faq__section
-					.faq__question Описание
-					.faq__answer Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
-				section.faq__section
-					.faq__question Технологии
-					.faq__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
-				section.faq__section
-					.faq__question Размерная сетка
-					.faq__answer Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
+			.accordion__block
+				section.accordion__section
+					.accordion__question Описание
+					.accordion__answer Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
+				section.accordion__section
+					.accordion__question Технологии
+					.accordion__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
+				section.accordion__section
+					.accordion__question Размерная сетка
+					.accordion__answer Мы&nbsp;отправляем заказы компанией СДЭК, стоимость доставки напрямую зависит от&nbsp;Вашего города и&nbsp;общего веса заказа, в&nbsp;среднем стоимость доставки по&nbsp;России от&nbsp;250 до&nbsp;1300р.Доставку до&nbsp;терминала осуществляем бесплатно.
 
-			form.dark-form(action="")
+			form.dark-form(action="").constructor
 
 				fieldset.text-radio
 					legend Гендер
@@ -56,10 +56,14 @@ block content
 
 				fieldset.number
 					legend Количество комплектов
+					.number__input
+						input(type="button", value="–" class="decrease-numb")
+						input(type="number" min="1" value="1")
+						input(type="button", value="+"  class="increase-numb")
 
 				fieldset.text-radio.text-radio_footered
 					legend Вид формы
-					.text-radio__buttons
+					.text-radio__buttons.text-radio__buttons_triple
 						input(type="radio", name="type", id="type-training")
 						label(for="type-training")
 							span Training
@@ -97,22 +101,33 @@ block content
 				fieldset.number
 					legend Загрузите свой дизайн
 
+				fieldset.text-select
+					legend Виды материалов
+					.text-select
+						.text-select__input
+							input.text-select__field(type="text" placeholder="Выберите материал" readonly)
+						.text-select__options
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
+							.option(data-value="Ложная сетка (белая 250-260 г/кв.м)") Ложная сетка (белая 250-260 г/кв.м)
+
 				fieldset.text-checkboxes.text-checkboxes_footered
 					legend Добавьте к комплектации
 					.text-checkboxes__buttons
-						input(type="checkbox", name="design", id="design-yes")
-						label(for="design-yes")
+						input(type="checkbox", name="extra", id="extra-gaiters")
+						label(for="extra-gaiters")
 							span Гетры
 							footer +800₽
-						input(type="checkbox", name="design", id="design-no")
-						label(for="design-no")
+						input(type="checkbox", name="extra", id="extra-bad")
+						label(for="extra-bad")
 							span Сумка
 							footer +1200₽
-						input(type="checkbox", name="design", id="design-yes")
-						label(for="design-yes")
+						input(type="checkbox", name="extra", id="extra-pennant")
+						label(for="extra-pennant")
 							span Вымпел
 							footer +800₽
-						input(type="checkbox", name="design", id="design-no")
-						label(for="design-no")
+						input(type="checkbox", name="extra", id="extra-chevrons")
+						label(for="extra-chevrons")
 							span Шевроны
 							footer +1200₽
+	script(src="/js/constructor.js")
