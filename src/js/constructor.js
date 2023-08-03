@@ -144,20 +144,17 @@ document.addEventListener('DOMContentLoaded', function () {
 	const fileMsg = fileDropBox.querySelector('.file-drop__msg');
 	const fileInput = fileDropBox.querySelector('.file-drop__input');
 
-	// Обработчик события "dragover" предотвращает стандартное поведение браузера для перетаскивания файлов
 	fileDropBox.addEventListener('dragover', (event) => {
 		event.preventDefault();
 		fileDropBox.classList.add('file-drop__box--highlight');
 		fileMsg.textContent = 'Отпустите файлы для загрузки…';
 	});
  
-	// Обработчик события "dragleave" снимает выделение блока при выходе курсора за его пределы
 	fileDropBox.addEventListener('dragleave', () => {
 		fileDropBox.classList.remove('file-drop__box--highlight');
 		fileMsg.textContent = 'Перетащите файлы сюда, чтобы загрузить…';
 	});
  
-	// Обработчик события "drop" запускается при отпускании файлов внутри блока
 	fileDropBox.addEventListener('drop', (event) => {
 		event.preventDefault();
 		fileDropBox.classList.remove('file-drop__box--highlight');
@@ -166,7 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
 		fileInput.files = files;
 	});
 
-	// Обработчик события "change" запускается при выборе файлов через стандартный input[type="file"]
 	fileInput.addEventListener('change', () => {
 		const files = fileInput.files;
 		fileMsg.textContent = `Выбрано файлов: ${files.length}`;

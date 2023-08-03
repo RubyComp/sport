@@ -29,8 +29,8 @@ const compileSass = () => {
 
 const minifyJs = () => {
 	return gulp.src('src/js/*.js')
-		.pipe(concat('app.js'))
-		.pipe(terser())
+		// .pipe(concat('app.js'))
+		// .pipe(terser())
 		.pipe(gulp.dest('dist/js'))
 		.pipe(livereload());
 };

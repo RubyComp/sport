@@ -450,7 +450,11 @@
 		font-size: 19px;
 		line-height: 1.52em;
 		margin-top: 3.8rem;
-		max-width: 640px;
+		max-width: 660px;
+
+		> p + p {
+			margin-top: .5rem;
+		}
 	}
 
 	&__achievements {
