@@ -1,7 +1,7 @@
 extends ../templates/main
 
 block vars
-	- const title = 'Главная'
+	- const title = 'essko – спортивная одежда'
 
 block content
 
@@ -211,7 +211,12 @@ block content
 				.form__fields
 					.timer
 						.timer__title Скидка действует
-						.timer__value 00:00:02:59
+						.timer__value
+							span#days 00
+							span#hours 00
+							span#minutes 00
+							span#seconds 00
+						//- 00:00:02:59
 
 					input(type="text" placeholder="имя")
 					input(type="text" placeholder="эл. почта")

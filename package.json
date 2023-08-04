@@ -1,6 +1,7 @@
 {
   "devDependencies": {
-    "gulp-connect": "^5.7.0"
+    "gulp-connect": "^5.7.0",
+    "gulp-real-favicon": "^0.3.2"
   },
   "name": "sport",
   "version": "1.0.0",

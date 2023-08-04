@@ -2,9 +2,9 @@ extends ../templates/common
 
 block vars
 	- const title = 'Возврат'
+	- const files = '.png, .jpg, .jpeg, .bmp, .pdf, .zip, .rar, .tar, .doc, .docx'
 
 block content
-
 	.container.form-page
 		header.form-page__header
 			h1 У вас появились проблемы с заказом?
@@ -14,8 +14,12 @@ block content
 			input(type="email" placeholder="Эл. почта")
 			input(type="tel" placeholder="Телефон")
 			textarea(name="", rows="10" placeholder="Кратко опишите вашу проблему" maxlength="10000")
-			span Загрузить фото (до 6 Мб)
-			input(type="file")
+			label.file-drop(for="files-design")
+				.file-drop__box#file-drop__box
+					.file-drop__msg Загрузить фото (до 6 Мб)
+					.file-drop__btn Выбрать
+					input.file-drop__input(type="file" id="files-design" multiple accept=files)
+				.file-drop__note #{files}
 			input(type="submit" value="Отправить")
 			footer.form-note Нажимая кнопку «Отправить» вы соглашаетесь с&nbsp;
-				a(href="/") Политикой конфиденциальности
+				a(href="/legal.html") Политикой конфиденциальности

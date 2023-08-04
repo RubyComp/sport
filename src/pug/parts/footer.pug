@@ -4,8 +4,12 @@ footer#footer
 
 	.container.subfooter
 		.subfooter__promo
-			img.site-logo(src=imgPath + "logo.svg")
-			small 162605, Россия, г. Краснодар, <br>ул. Кремлевская 1, стр. 7, офис 54
+			.subfooter__company
+				img.site-logo(src=imgPath + "logo.svg")
+				small 162605, Россия, г. Краснодар, <br>ул. Кремлевская 1, стр. 7, офис 54
+			a(href="https://rusit-po.ru" target="_blank").subfooter__dev
+				img.site-logo(src=imgPath + "/logos/rusit-logo.svg" width="82")
+				small Сайт разработан компанией RusIt
 
 		.subfooter__main
 			nav.subfooter__nav
@@ -22,7 +26,7 @@ footer#footer
 						li
 							a(href="") Telegram
 						li
-							a(href="") Whatsapp
+							a(href="") WhatsApp
 
 				section
 					header Услуги

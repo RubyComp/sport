@@ -585,6 +585,10 @@
 		color: var(--accent-color);
 		font-size: 35px;
 		letter-spacing: -0.01em;
+
+		span+span:before {
+			content: ':';
+		}
 	}
 }
 
