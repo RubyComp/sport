@@ -34,7 +34,7 @@
 		}
 		@include xs {
 			background-position: center 118px;
-			height: 820px;
+			height: 790px;
 		}
 	}
 
@@ -153,7 +153,7 @@
 	&-section {
 		h2 {
 			margin-bottom: 3.6rem;
-			@include sm {
+			@include sm-and-less {
 				margin-bottom: 2.5rem;
 			}
 		}
@@ -169,7 +169,7 @@
 	justify-content: center;
 	text-align: center;
 	padding: 1.4rem 1.4rem 1rem;
-	@include sm {
+	@include sm-and-less {
 		padding: 1.2rem 1rem 1rem;
 	}
 
@@ -178,7 +178,7 @@
 		font-family: var(--accent-font);
 		width: 100%;
 		text-transform: uppercase;
-		@include sm {
+		@include sm-and-less {
 			font-size: 16px;
 		}
 
@@ -191,7 +191,7 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			margin: .71rem 0;
-			@include sm {
+			@include sm-and-less {
 				margin: .64rem 0;
 			}
 		}
@@ -227,7 +227,7 @@
 	&__note {
 		color: var(--light-grey-color);
 		line-height: 1.44em;
-		@include sm {
+		@include sm-and-less {
 			font-size: 12px;
 			line-height: 1.3em;
 		}
@@ -242,9 +242,12 @@
 			@include md {
 				width: 210px;
 			}
-			@include sm {
-				width: 180px;
+			@include sm-and-less {
+				width: 190px;
 			}
+		}
+		@include sm-and-less {
+			padding-bottom: 1.5rem;
 		}
 	}
 }
@@ -253,7 +256,7 @@
 
 	&-section {
 		margin-top: 9.5rem;
-		@include sm {
+		@include sm-and-less {
 			margin-top: 6.2rem;
 		}
 	}
@@ -273,11 +276,14 @@
 		margin-top: 8.2rem;
 		padding: 0 1rem;
 		text-align: center;
-		@include sm {
+		@include sm-and-less {
 			font-size: 14px;
 			margin-top: 4.5rem;
 			line-height: 1.4em;
 			--tech-gap: 1.65rem;
+		}
+		@include xs {
+			grid-template-columns: 1fr;
 		}
 	}
 
@@ -287,7 +293,7 @@
 		gap: 1.2rem;
 		position: relative;
 		padding-bottom: var(--tech-gap);
-		@include sm {
+		@include sm-and-less {
 			gap: .95rem;
 		}
 
@@ -305,6 +311,9 @@
 		&:nth-last-child(-n+2) {
 			&::after {
 				display: none;
+				@include xs {
+					display: block;
+				}
 			}
 		}
 	}
@@ -315,7 +324,7 @@
 		justify-content: center;
 		align-items: center;
 		gap: 1.25rem;
-		@include sm {
+		@include sm-and-less {
 			gap: 1rem;
 		}
 	}
@@ -330,7 +339,7 @@
 		font-size: 25px;
 		letter-spacing: 0.02em;
 		text-transform: uppercase;
-		@include sm {
+		@include sm-and-less {
 			font-size: inherit;
 		}
 	}
@@ -344,9 +353,13 @@
 	justify-content: space-between;
 	position: relative;
 	margin: 3.6rem auto 2.5rem;
+	width: 100%;
+	overflow: hidden;
+	padding: 0 .25rem;
 
-	@include sm {
+	@include sm-and-less {
 		margin: 3.6rem auto 2rem;
+		flex-wrap: wrap;
 	}
 	@mixin fade-out($direction) {
 		background-image: linear-gradient($direction, #111 7.10%, rgba(17, 17, 17, 0.00) 100%);
@@ -355,6 +368,13 @@
 	img {
 		pointer-events: none;
 		user-select: none;
+		@include sm-and-less {
+			flex-basis: 15%;
+			height: 50px;
+			&:nth-child(11) {
+				display: none;
+			}
+		}
 	}
 
 	&::before,
@@ -383,12 +403,11 @@
 	margin: 2rem auto;
 }
 
-
 .examples {
 
 	&-section {
 		margin-top: 9.5rem;
-		@include sm {
+		@include sm-and-less {
 			margin-top: 6.5rem;
 		}
 	}
@@ -399,7 +418,7 @@
 		display: flex;
 		max-width: 100vw;
 		overflow-x: hidden;
-		@include sm {
+		@include sm-and-less {
 			--img-height: 490px;
 			margin-top: 2.6rem;
 			max-height: var(--img-height);
@@ -415,7 +434,7 @@
 
 	&-section {
 		margin-top: 9rem;
-		@include sm {
+		@include sm-and-less {
 			margin-top: 6.2rem;
 		}
 
@@ -511,6 +530,13 @@
 			background-size: 700px;
 			padding-bottom: 1rem;
 		}
+		@include xs {
+			margin-top: 0;
+			padding-top: 12.5rem;
+			background-position: -56px -60px;
+			background-size: 700px;
+			padding-bottom: 1rem;
+		}
 	}
 	&__header img {
 
@@ -519,6 +545,9 @@
 		}
 		@include sm {
 			max-width: 38rem;
+		}
+		@include xs {
+			max-width: 28rem;
 		}
 	}
 	&__title {
@@ -537,9 +566,11 @@
 			margin-top: 6rem;
 		}
 		@include sm {
+			max-width: 320px;
+		}
+		@include sm-and-less {
 			font-size: 20px;
 			margin-top: 1.25rem;
-			max-width: 320px;
 		}
 	}
 
@@ -557,15 +588,20 @@
 			margin-top: .5rem;
 			font-size: 14px;
 		}
+		@include xs {
+			margin-top: 1.2rem;
+			font-size: 14px;
+		}
 	}
 
 	&__achievements {
 		display: flex;
 		gap: 4rem;
 		margin-top: 4.2rem;
-		@include sm {
+		@include sm-and-less {
 			margin-top: 1.7rem;
 			justify-content: space-between;
+			padding-right: 2rem;
 		}
 
 		header {
@@ -579,6 +615,11 @@
 			letter-spacing: -0.015em;
 			@include sm {
 				font-size: 50px;
+				text-align: right;
+			}
+			@include xs {
+				text-align: right;
+				font-size: 40px;
 			}
 		}
 
@@ -586,6 +627,10 @@
 			font-size: 14px;
 			text-align: right;
 			color: var(--light-grey-color);
+			@include xs {
+				text-align: right;
+				max-width: 8em;
+			}
 		}
 	}
 
@@ -597,7 +642,7 @@
 	&-section {
 		--form-border-color: var(--grey-color);
 		margin-top: 8.1rem;
-		@include sm {
+		@include sm-and-less {
 			margin-top: 5.5rem;
 		}
 	}
@@ -608,7 +653,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		position: relative;
-		@include sm {
+		@include sm-and-less {
 			grid-template-columns: 1fr;
 		}
 
@@ -627,7 +672,7 @@
 			user-select: none;
 			width: 55%;
 			z-index: -1;
-			@include sm {
+			@include sm-and-less {
 				display: none;
 				content: none;
 			}
@@ -637,7 +682,7 @@
 		border-right: 1px solid var(--form-border-color);
 		padding: 2.7rem 2.7rem 2.4rem;
 		background-color: var(--dark-color);
-		@include sm {
+		@include sm-and-less {
 			padding: 1.25rem .5rem;
 		}
 	}
@@ -658,6 +703,12 @@
 		@include sm-and-less {
 			border-bottom: 1px solid var(--form-border-color);
 		}
+		@include xs {
+			height: 220px;
+			order: -1;
+			background-size: 110%;
+			background-position: center 40%;
+		}
 	}
 
 	&__header {
@@ -674,7 +725,7 @@
 		font-size: 18px;
 		line-height: 1.17em;
 		text-transform: uppercase;
-		@include sm {
+		@include sm-and-less {
 			font-size: 14px;
 			line-height: 1.3em;
 		}
@@ -684,10 +735,10 @@
 		line-height: 1.5em;
 		margin: .6rem auto;
 		max-width: 320px;
-		@include sm {
+		@include sm-and-less {
 			font-size: 12px;
 		}
-		@include sm {
+		@include sm-and-less {
 			max-width: initial;
 			margin: .5rem auto;
 		}
@@ -698,8 +749,8 @@
 		flex-direction: column;
 		gap: 1.1rem;
 		margin-top: 1.2rem;
-		@include sm {
-			gap: .43rem;
+		@include sm-and-less {
+			gap: .5rem;
 		}
 	}
 	&__legal {
@@ -729,7 +780,7 @@
 		font-family: var(--accent-font);
 		font-size: 18px;
 		text-transform: uppercase;
-		@include sm {
+		@include sm-and-less {
 			font-size: 14px;
 		}
 	}
@@ -738,7 +789,7 @@
 		font-family: arial;
 		font-size: 35px;
 		letter-spacing: -0.01em;
-		@include sm {
+		@include sm-and-less {
 			font-size: 25px;
 		}
 
@@ -753,7 +804,7 @@
 	&-section {
 		margin-top: 9.2rem;
 
-		@include sm {
+		@include sm-and-less {
 			margin-top: 6.3rem;
 		}
 		.accordion__block {

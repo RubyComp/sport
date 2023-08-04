@@ -3,6 +3,10 @@
 	line-height: 1.45em;
 	margin-top: var(--page-top-margin);
 
+	@include sm-and-less {
+		font-size: 14px;
+		line-height: 1.5em;
+	}
 	h1 {
 		margin-bottom: 3rem;
 	}

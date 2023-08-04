@@ -2,6 +2,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	console.log('Scripts')
 
 	////////////////////////////////
+	// Burger
+	document.getElementById('burger').addEventListener('click', function () {
+		const menu = document.getElementById('burger-menu')
+		menu.classList.toggle('show')
+	});
+
+	////////////////////////////////
 	// Cookie
 
 	const hideCookieNotification = () => {
@@ -29,23 +36,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	/**/
 
-	const HEADER = 'header'
-	const COMPACT = HEADER + '_compact'
+	// const HEADER = 'header'
+	// const COMPACT = HEADER + '_compact'
 
-	const header = document.querySelector('.' + HEADER)
+	// const header = document.querySelector('.' + HEADER)
 
-	const checkScrollPosition = () => {
-		if (
-			window.hasOwnProperty('scrollY')
-			&& window.scrollY > 90
-		)
-			header.classList.add(COMPACT)
-		else
-			header.classList.remove(COMPACT)
-	}
+	// const checkScrollPosition = () => {
+	// 	if (
+	// 		window.hasOwnProperty('scrollY')
+	// 		&& window.scrollY > 90
+	// 	)
+	// 		header.classList.add(COMPACT)
+	// 	else
+	// 		header.classList.remove(COMPACT)
+	// }
 
-	checkScrollPosition()
-	window.addEventListener('scroll', checkScrollPosition)
+	// checkScrollPosition()
+	// window.addEventListener('scroll', checkScrollPosition)
 
 	/* */
 
