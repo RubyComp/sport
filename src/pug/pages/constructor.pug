@@ -5,8 +5,9 @@ block vars
 	- const files = '.png, .jpg, .jpeg, .bmp, .pdf, .zip, .rar, .tar, .doc, .docx'
 
 block content
-	.container.double-colums
+	.container.constructor-page
 		aside.product-preview
+			h1.focus-title #{title}
 			div.product-preview__box
 				picture.product-preview__picture
 					img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
