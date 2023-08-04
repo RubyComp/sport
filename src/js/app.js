@@ -9,6 +9,37 @@ document.addEventListener('DOMContentLoaded', function () {
 	});
 
 	////////////////////////////////
+	// Modal
+	const closeModalButtons = document.querySelectorAll('.modal-close');
+
+	for (var i = 0; i < closeModalButtons.length; i++) {
+		closeModalButtons[i].addEventListener('click', function () {
+			const modal = this.closest('.modal')
+			if (modal) {
+				modal.style.display = 'none'
+			}
+		})
+	}
+
+	/* */
+
+	const showModalButtons = document.querySelectorAll('.show-modal')
+
+	for (let i = 0; i < showModalButtons.length; i++) {
+		showModalButtons[i].addEventListener('click', function () {
+			const modalId = this.getAttribute('data-modal')
+			const modalElement = document.getElementById(modalId)
+
+			if (modalElement) {
+				modalElement.style.display = 'block'
+			}
+		})
+	}
+
+
+
+
+	////////////////////////////////
 	// Cookie
 
 	const hideCookieNotification = () => {

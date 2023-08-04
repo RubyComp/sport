@@ -75,6 +75,13 @@
 	border-style: solid;
 	padding: 1.3rem 1.3rem 1rem;
 
+	@include sm-and-less {
+		--elements: 3;
+		border-left: none;
+		border-right: none;
+		width: 100%;
+	}
+
 	h1 {
 		font-size: 20px;
 	}
@@ -97,6 +104,23 @@
 	border-color: var(--product-color);
 	border-width: 0 1px 1px;
 	border-style: solid;
+	font-size: 14px;
+
+	@include md {
+		font-size: 12px;
+	}
+	@include sm-and-less {
+		--elements: 3;
+		border-left: none;
+		border-right: none;
+		width: 100%;
+	}
+	@include sm {
+		--elements: 3;
+	}
+	@include xs {
+		--elements: 2;
+	}
 
 	> a {
 		background-color: var(--back-color);
@@ -110,6 +134,10 @@
 		text-align: center;
 		text-decoration: none;
 		text-transform: uppercase;
+
+		@include md {
+			padding: 3rem .5rem;
+		}
 
 		img {
 			width: 100%;
@@ -222,5 +250,66 @@
 	padding-bottom: 1.4rem;
 	.accordion__answer {
 		max-height: 1000px;
+	}
+}
+
+.modal {
+	background-color: var(--back-color);
+	border: 1px solid var(--grey-color);
+	font-size: 19px;
+	max-height: 90vh;
+	max-width: 520px;
+	padding: 2.5rem 2.1rem;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 5;
+
+	header {
+		font-size: 25px;
+		font-family: var(--accent-font);
+		text-transform: uppercase;
+		line-height: 1.25em;
+		margin-bottom: 1rem;
+		max-width: 320px;
+		margin: 0 auto 1rem;
+
+		&, &+p {
+			text-align: center;
+		}
+	}
+
+	small {
+		font-size: 12px;
+		color: var(--light-grey-color);
+		line-height: 1.4em;
+		display: block;
+		text-align: center;
+		max-width: 320px;
+		margin: 1.2rem auto 0;
+	}
+
+	form {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		margin-top: 1.75rem;
+	}
+
+	a {
+		text-decoration: none;
+		color: var(--accent-color);
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+
+	&-close {
+		position: absolute;
+		right: .5rem;
+		top: .5rem;
+		cursor: pointer;
+		padding: .5rem;
 	}
 }

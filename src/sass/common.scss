@@ -110,6 +110,7 @@ button {
 
 }
 
+
 .header {
 	--logo-top-fix: 8px;
 	align-items: center;
@@ -330,6 +331,9 @@ button {
 		height: 82px;
 		display: flex;
 		align-items: center;
+		a {
+			padding-top: .1rem;
+		}
 	}
 	&__tel {
 		border-bottom: var(--border);
@@ -339,11 +343,11 @@ button {
 		justify-content: space-around;
 
 		li {
-			flex-grow: 1;
-			display: flex;
-			justify-content: center;
 			align-items: center;
+			display: flex;
+			flex-grow: 1;
 			height: 100%;
+			justify-content: center;
 		}
 
 		li + li {
@@ -468,6 +472,7 @@ button {
 		padding: 3.8rem 2.7rem 1.2rem;
 		justify-content: space-between;
 		line-height: 1.5em;
+		gap: 1.5rem;
 		@include sm-and-less {
 			padding: 2.6rem 1rem;
 			flex-direction: row;
@@ -543,6 +548,10 @@ button {
 			gap: 2rem;
 		}
 
+		header {
+			color: var(--text-color);
+		}
+		
 		header + ul {
 			margin-top: .75rem;
 			@include md {

@@ -1,0 +1,15 @@
+.modal#callback(style="display:none")
+	button.modal-close
+		img(src=imgPath + "icons/x.svg", alt="Закрыть" title="Закрыть")
+
+	header Осталось совсем&nbsp;чуть-чуть!
+	p Заполните данные и&nbsp;наш менеджер свяжется с&nbsp;вами для уточнения деталей
+	form.dark-form
+		input(type="text" placeholder="Имя")
+		input(type="email" placeholder="Эл. почта")
+		input(type="tel" placeholder="Телефон")
+		input(type="submit" value="Отправить")
+
+	small
+		| Нажимая кнопку «Отправить» вы соглашаетесь с&nbsp;
+		a(href="/legal.html") Политикой конфиденциальности
