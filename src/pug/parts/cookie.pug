@@ -1,7 +1,7 @@
-.popup#cookie
+.popup#cookie(style="display:none")
 	.container
 		.popup__text Чтобы предоставить вам лучший сервис, мы используем файлы <b>cookie</b> и аналогичные методы. Файлы <b>cookie</b> используются для обеспечения правильной работы сайта.
 		.popup__actions
-			button.btn.btn_primary(onclick="document.getElementById('cookie').style.display = 'none';") Принять
-			button.btn.btn_squared.btn_outline(onclick="document.getElementById('cookie').style.display = 'none';")
+			button#cookie-ok.btn.btn_primary Принять
+			button#cookie-close.btn.btn_squared.btn_outline
 				img(src=imgPath + "icons/x.svg")

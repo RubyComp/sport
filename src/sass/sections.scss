@@ -30,9 +30,11 @@
 		}
 		@include sm {
 			background-position: center 82px;
+			height: 680px;
 		}
 		@include xs {
 			background-position: center 118px;
+			height: 820px;
 		}
 	}
 
@@ -151,6 +153,9 @@
 	&-section {
 		h2 {
 			margin-bottom: 3.6rem;
+			@include sm {
+				margin-bottom: 2.5rem;
+			}
 		}
 	}
 }
@@ -164,12 +169,18 @@
 	justify-content: center;
 	text-align: center;
 	padding: 1.4rem 1.4rem 1rem;
+	@include sm {
+		padding: 1.2rem 1rem 1rem;
+	}
 
 	&__title {
-		font-size: 18px;
+		font-size: 14px;
 		font-family: var(--accent-font);
 		width: 100%;
 		text-transform: uppercase;
+		@include sm {
+			font-size: 16px;
+		}
 
 		&::after {
 			content: '';
@@ -180,6 +191,9 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			margin: .71rem 0;
+			@include sm {
+				margin: .64rem 0;
+			}
 		}
 	}
 
@@ -213,6 +227,10 @@
 	&__note {
 		color: var(--light-grey-color);
 		line-height: 1.44em;
+		@include sm {
+			font-size: 12px;
+			line-height: 1.3em;
+		}
 	}
 	&__img {
 		align-items: flex-end;
@@ -220,6 +238,14 @@
 		flex-grow: 1;
 		justify-content: center;
 		padding-bottom: 2.4rem;
+		img {
+			@include md {
+				width: 210px;
+			}
+			@include sm {
+				width: 180px;
+			}
+		}
 	}
 }
 
@@ -227,6 +253,9 @@
 
 	&-section {
 		margin-top: 9.5rem;
+		@include sm {
+			margin-top: 6.2rem;
+		}
 	}
 
 	&__list {
@@ -244,6 +273,12 @@
 		margin-top: 8.2rem;
 		padding: 0 1rem;
 		text-align: center;
+		@include sm {
+			font-size: 14px;
+			margin-top: 4.5rem;
+			line-height: 1.4em;
+			--tech-gap: 1.65rem;
+		}
 	}
 
 	&__item {
@@ -252,6 +287,9 @@
 		gap: 1.2rem;
 		position: relative;
 		padding-bottom: var(--tech-gap);
+		@include sm {
+			gap: .95rem;
+		}
 
 		&::after {
 			background-image: var(--silver-line);
@@ -277,6 +315,9 @@
 		justify-content: center;
 		align-items: center;
 		gap: 1.25rem;
+		@include sm {
+			gap: 1rem;
+		}
 	}
 	&__icon {
 		height: 42px;
@@ -289,6 +330,9 @@
 		font-size: 25px;
 		letter-spacing: 0.02em;
 		text-transform: uppercase;
+		@include sm {
+			font-size: inherit;
+		}
 	}
 
 }
@@ -301,6 +345,9 @@
 	position: relative;
 	margin: 3.6rem auto 2.5rem;
 
+	@include sm {
+		margin: 3.6rem auto 2rem;
+	}
 	@mixin fade-out($direction) {
 		background-image: linear-gradient($direction, #111 7.10%, rgba(17, 17, 17, 0.00) 100%);
 	}
@@ -341,13 +388,25 @@
 
 	&-section {
 		margin-top: 9.5rem;
+		@include sm {
+			margin-top: 6.5rem;
+		}
 	}
 
 	&__slider {
+		--img-height: 627px;
 		margin-top: 4rem;
 		display: flex;
 		max-width: 100vw;
 		overflow-x: hidden;
+		@include sm {
+			--img-height: 490px;
+			margin-top: 2.6rem;
+			max-height: var(--img-height);
+		}
+		img {
+			height: var(--img-height);
+		}
 	}
 }
 
@@ -356,6 +415,9 @@
 
 	&-section {
 		margin-top: 9rem;
+		@include sm {
+			margin-top: 6.2rem;
+		}
 
 		.btn-line {
 			margin: 3.65rem auto;
@@ -363,13 +425,21 @@
 	}
 
 	&__list {
+		--grid-count: 3;
 		background-color: var(--grey-color);
 		margin-top: 3.6rem;
 		display: grid;
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(var(--grid-count), 1fr);
 		grid-template-rows: repeat(2, 350px);
 		padding: 1px;
 		grid-gap: 1px;
+		@include sm {
+			--grid-count: 2;
+			margin-top: 2.5rem;
+		}
+		@include xs {
+			--grid-count: 1;
+		}
 	}
 
 	&__item {
@@ -430,6 +500,26 @@
 		padding-bottom: 9.6rem;
 		z-index: -1;
 		position: relative;
+		@include md {
+			background-position: right 50px;
+			margin-top: 12rem;
+		}
+		@include sm {
+			margin-top: 0;
+			padding-top: 5.25rem;
+			background-position: 102px -60px;
+			background-size: 700px;
+			padding-bottom: 1rem;
+		}
+	}
+	&__header img {
+
+		@include md {
+			max-width: 60rem;
+		}
+		@include sm {
+			max-width: 38rem;
+		}
 	}
 	&__title {
 		-webkit-background-clip: text;
@@ -443,6 +533,14 @@
 		margin-top: 3.5rem;
 		max-width: 46rem;
 		text-transform: uppercase;
+		@include md {
+			margin-top: 6rem;
+		}
+		@include sm {
+			font-size: 20px;
+			margin-top: 1.25rem;
+			max-width: 320px;
+		}
 	}
 
 	&__text {
@@ -455,12 +553,20 @@
 		> p + p {
 			margin-top: .5rem;
 		}
+		@include sm {
+			margin-top: .5rem;
+			font-size: 14px;
+		}
 	}
 
 	&__achievements {
 		display: flex;
 		gap: 4rem;
 		margin-top: 4.2rem;
+		@include sm {
+			margin-top: 1.7rem;
+			justify-content: space-between;
+		}
 
 		header {
 			-webkit-background-clip: text;
@@ -471,6 +577,9 @@
 			font-weight: 400;
 			font-family: var(--accent-font);
 			letter-spacing: -0.015em;
+			@include sm {
+				font-size: 50px;
+			}
 		}
 
 		footer {
@@ -488,6 +597,9 @@
 	&-section {
 		--form-border-color: var(--grey-color);
 		margin-top: 8.1rem;
+		@include sm {
+			margin-top: 5.5rem;
+		}
 	}
 
 	&__block {
@@ -496,6 +608,9 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		position: relative;
+		@include sm {
+			grid-template-columns: 1fr;
+		}
 
 		&:before {
 			background-color: #8B8B8B;
@@ -512,17 +627,37 @@
 			user-select: none;
 			width: 55%;
 			z-index: -1;
+			@include sm {
+				display: none;
+				content: none;
+			}
 		}
 	}
 	&__main {
 		border-right: 1px solid var(--form-border-color);
 		padding: 2.7rem 2.7rem 2.4rem;
+		background-color: var(--dark-color);
+		@include sm {
+			padding: 1.25rem .5rem;
+		}
 	}
 	&__aside {
 		background-image: url($imgPath + 'graphics/sale-40.svg');
 		background-repeat: no-repeat;
 		background-size: 138%;
 		background-position: center;
+		@include md {
+			background-size: 200%;
+		}
+		@include sm {
+			height: 220px;
+			order: -1;
+			background-size: 80%;
+			background-position: center 40%;
+		}
+		@include sm-and-less {
+			border-bottom: 1px solid var(--form-border-color);
+		}
 	}
 
 	&__header {
@@ -539,12 +674,23 @@
 		font-size: 18px;
 		line-height: 1.17em;
 		text-transform: uppercase;
+		@include sm {
+			font-size: 14px;
+			line-height: 1.3em;
+		}
 	}
 	&__subtitle {
 		font-size: 14px;
 		line-height: 1.5em;
 		margin: .6rem auto;
 		max-width: 320px;
+		@include sm {
+			font-size: 12px;
+		}
+		@include sm {
+			max-width: initial;
+			margin: .5rem auto;
+		}
 	}
 
 	&__fields {
@@ -552,6 +698,9 @@
 		flex-direction: column;
 		gap: 1.1rem;
 		margin-top: 1.2rem;
+		@include sm {
+			gap: .43rem;
+		}
 	}
 	&__legal {
 		line-height: 1.2em;
@@ -580,11 +729,18 @@
 		font-family: var(--accent-font);
 		font-size: 18px;
 		text-transform: uppercase;
+		@include sm {
+			font-size: 14px;
+		}
 	}
 	&__value {
 		color: var(--accent-color);
+		font-family: arial;
 		font-size: 35px;
 		letter-spacing: -0.01em;
+		@include sm {
+			font-size: 25px;
+		}
 
 		span+span:before {
 			content: ':';
@@ -597,6 +753,9 @@
 	&-section {
 		margin-top: 9.2rem;
 
+		@include sm {
+			margin-top: 6.3rem;
+		}
 		.accordion__block {
 			margin-top: 3.4rem;
 		}

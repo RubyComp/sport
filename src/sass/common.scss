@@ -291,6 +291,18 @@ button {
 	display: grid;
 	grid-template-columns: 2fr 1fr 1fr;
 	padding: 3.5rem 2.7rem 3.1rem;
+	@include md {
+		grid-template-columns: 2fr 1fr;
+	}
+	@include sm {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 1.2rem;
+		text-align: center;
+		width: 100%;
+	}
+
 
 	&__title {
 		font-size: 25px;
@@ -298,6 +310,14 @@ button {
 		text-transform: uppercase;
 		padding-right: 9rem;
 		line-height: 1.3em;
+		@include md {
+			grid-column: 1;
+		}
+		@include sm {
+			font-size: 14px;
+			padding: initial;
+			max-width: 420px;
+		}
 	}
 
 	&__tel {
@@ -309,9 +329,31 @@ button {
 				text-decoration: underline;
 			}
 		}
+		@include md {
+			grid-row: 2;
+			grid-column: 1;
+			margin-top: 2.4rem;
+		}
+		@include sm {
+			font-size: 10px;
+			margin-top: 1.25rem;
+		}
 	}
 	&__btn {
 		justify-self: end;
+		white-space: nowrap;
+		@include md {
+			grid-column: 2;
+			grid-row-start: 1;
+			grid-row-end: 3;
+		}
+		@include sm {
+			margin-top: 1.25rem;
+
+			&, .btn {
+				width: 100%;
+			}
+		}
 	}
 }
 
@@ -320,7 +362,6 @@ button {
 	border-color: var(--grey-color);
 	border-width: 1px 1px 0;
 	border-style: solid;
-	height: 300px;
 
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -374,9 +415,16 @@ button {
 		gap: 1rem;
 		justify-content: space-between;
 		padding: 3.5rem 3rem 1rem 2.5rem;
+		@include md {
+			font-size: 12px;
+			padding: 3.8rem 1rem 1rem 1rem;
+		}
 
 		header + ul {
 			margin-top: .75rem;
+			@include md {
+				margin-top: .4rem;
+			}
 		}
 		li + li {
 			margin-top: .75rem;
@@ -384,11 +432,16 @@ button {
 	}
 
 	&__legal {
+		align-items: center;
 		border-top: 1px solid var(--grey-color);
 		display: flex;
 		font-size: 12px;
 		justify-content: space-between;
 		padding: .8rem 2.5rem;
+
+		@include md {
+			padding: 1.2rem 1rem;
+		}
 
 		a {
 			text-decoration: underline;

@@ -41,8 +41,8 @@ block content
 				| * Бесплатная доставка по&nbsp;России от&nbsp;50&nbsp;000&nbsp;₽
 
 	section.products-section
-		.container.focus-title
-			h2 Создайте свою экипировку
+		.container
+			h2.focus-title Создайте свою экипировку
 		include ../modules/slider
 
 	section.tech-section
@@ -181,7 +181,7 @@ block content
 
 	section.about-section
 		article.container
-			header
+			header.about__header
 				img(src=imgPath + "graphics/legal-advantage-text.svg", alt="Legal Advantage")
 			h2.about__title Создаем действительно качественный продукт, который поможет вам в&nbsp;спорте
 			.about__text
@@ -209,13 +209,13 @@ block content
 						|  для детских школ, академий или спортивных организация
 					.form__subtitle Оставьте заявку и&nbsp;получите скидку до&nbsp;40% на&nbsp;первый заказ + бесплатный дизайн принта
 				.form__fields
-					.timer
+					.timer#timer
 						.timer__title Скидка действует
 						.timer__value
-							span#days 00
-							span#hours 00
-							span#minutes 00
-							span#seconds 00
+							span#days &nbsp;&nbsp;
+							span#hours &nbsp;&nbsp;
+							span#minutes &nbsp;&nbsp;
+							span#seconds &nbsp;&nbsp;
 						//- 00:00:02:59
 
 					input(type="text" placeholder="имя")

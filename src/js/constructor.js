@@ -30,9 +30,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Умножаем общую цену на количество копий
 		const count = parseInt(countElement.value)
-		console.log('count', count)
 		totalPrice = singlePrice * count
-
 
 		// Обновляем значения в элементах
 		singlePriceElement.textContent = validPrice(singlePrice)
@@ -59,7 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	function increasecost(event) {
-		console.log(1)
 		const input = event.target.previousElementSibling
 		const currentcost = parseInt(input.value, 10)
 		input.value = currentcost + 1
