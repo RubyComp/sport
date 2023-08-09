@@ -2,6 +2,9 @@ extends ../templates/main
 
 block vars
 	- const title = 'essko – спортивная одежда'
+	- const description = 'Произовдство спортивной повседневной одежды и экипировки на заказ. Качественная, функциональная и стильная одежда для спортивных команд, школ и академий различных видов спорта.'
+	- const keywords = 'Экипировка, Спортивная одежда, Повседневная одежда, Аксессуары, Пошив спортивной одежды, Форма на заказ, Лояльные цены, Бесплатная доставка, Материалы премиум качества, Детская спортивная форма, Собственное производство, Технологичные пропитки, Высокая прочность, Эластичность, Терморегуляция, Быстрое высыхание, Разработка спортивной экипировки, Дизайн экипировки, Примеры дизайна формы, Производство на заказ, Компания по производству экипировки, Стильная спортивная одежда, Качественные материалы'
+	include ../data/info
 
 block content
 
@@ -105,16 +108,17 @@ block content
 	section.examples-section
 		.container
 			h2.focus-title Примеры <br>работы
-		.examples__slider
-			picture
+		.carousel
+			.carousel-wrapper
 				img(src=imgPath + "promo/promo-photo-1.jpg", alt="")
-			picture
 				img(src=imgPath + "promo/promo-photo-2.jpg", alt="")
-			picture
 				img(src=imgPath + "promo/promo-photo-3.jpg", alt="")
-			picture
 				img(src=imgPath + "promo/promo-photo-4.jpg", alt="")
-			picture
+				img(src=imgPath + "promo/promo-photo-5.jpg", alt="")
+				img(src=imgPath + "promo/promo-photo-1.jpg", alt="")
+				img(src=imgPath + "promo/promo-photo-2.jpg", alt="")
+				img(src=imgPath + "promo/promo-photo-3.jpg", alt="")
+				img(src=imgPath + "promo/promo-photo-4.jpg", alt="")
 				img(src=imgPath + "promo/promo-photo-5.jpg", alt="")
 
 	section.steps-section

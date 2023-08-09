@@ -1,7 +1,7 @@
 extends ../templates/common
 
 block vars
-	- const title = 'Комплекты футбольной формы'
+	- const title = 'Комплекты формы'
 	- const files = '.png, .jpg, .jpeg, .bmp, .pdf, .zip, .rar, .tar, .doc, .docx'
 
 block content
@@ -26,42 +26,15 @@ block content
 			h1.focus-title #{title}
 			.accordion__block
 				section.accordion__section
-					.accordion__question Описание
-					.accordion__answer Стандартный срок производства заказа 10-15 рабочих дней.Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
+					.accordion__question Сроки
+					.accordion__answer Стандартный срок производства заказа 10-15 рабочих дней. Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
 				section.accordion__section
-					.accordion__question Технологии
+					.accordion__question Описание
 					.accordion__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
 				section.accordion__section
 					.accordion__question Размерная сетка
-					.accordion__answer
-						table.simply-table
-							thead
-								tr
-									th(width="23%") Рост
-									th(width="30%") Обхват груди
-									th(width="31%") Обхват бедер
-									th(width="27%") Размер
-							tbody
-								tr
-									td 104
-									td 56
-									td 60,6
-									td 28
-								tr
-									td 110
-									td 58
-									td 63,0
-									td 28-30
-								tr
-									td 116
-									td 60
-									td 65,3
-									td 30
-								tr
-									td 122
-									td 62
-									td 68,0
-									td 30-32
+					.accordion__answer.accordion__answer_table
+						include ../modules/sizes-tables
 
 
 			form.dark-form(action="").constructor#constructor

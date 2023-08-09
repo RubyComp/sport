@@ -6,7 +6,7 @@ footer#footer
 		.subfooter__promo
 			.subfooter__company
 				img.site-logo(src=imgPath + "logo.svg")
-				small 162605, Россия, г. Краснодар, <br>ул. Кремлевская 1, стр. 7, офис 54
+				small #{address}
 			a(href="https://rusit-po.ru" target="_blank").subfooter__dev
 				img.site-logo(src=imgPath + "/logos/rusit-logo.svg" width="82")
 				small Сайт разработан компанией RusIt
@@ -20,13 +20,14 @@ footer#footer
 						li
 							include ../modules/tel.pug
 						li
-							a(href="") Essko@.com
+							a(href='mailto:' + email)= email
+
+						//- li
+						//- 	a(href="") VKontakte
+						//- li
+						//- 	a(href="") Telegram
 						li
-							a(href="") VKontakte
-						li
-							a(href="") Telegram
-						li
-							a(href="") WhatsApp
+							a(href=whatsApp target="_blank") WhatsApp
 
 				section
 					header Услуги

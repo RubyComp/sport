@@ -96,15 +96,15 @@
 	--product-gap: 1px;
 	--product-color: var(--grey-color);
 	background-color: var(--product-color);
+	border-color: var(--product-color);
+	border-style: solid;
+	border-width: 0 1px 1px;
 	display: grid;
+	font-size: 14px;
 	gap: var(--product-gap);
 	grid-template-columns: repeat(var(--elements), 1fr);
-	overflow: hidden;
 	margin-top: -1px;
-	border-color: var(--product-color);
-	border-width: 0 1px 1px;
-	border-style: solid;
-	font-size: 14px;
+	overflow: hidden;
 
 	@include md {
 		font-size: 12px;
@@ -137,6 +137,9 @@
 
 		@include md {
 			padding: 3rem .5rem;
+		}
+		@include xs {
+			padding: 1.5rem;
 		}
 
 		img {
@@ -185,7 +188,6 @@
 		max-width: 900px;
 		font-size: 14px;
 		padding: .4rem 0;
-
 	}
 
 	&__section {
@@ -220,6 +222,7 @@
 		padding: 1.5rem 1rem 1.1rem 3.3rem;
 		position: relative;
 		text-transform: uppercase;
+		line-height: 1.35em;
 
 		&::before {
 			background-image: url($imgPath + '/icons/plus.svg');
@@ -244,6 +247,18 @@
 		overflow: hidden;
 		padding-left: 3.3rem;
 		transition: .35s ease;
+
+		@include xxs {
+			padding-left: 0;
+			max-width: 95vw;
+			&_table {
+				width: 100%;
+			}
+			table {
+				font-size: 9px;
+				width: 100%;
+			}
+		}
 	}
 }
 .accordion__section.active {

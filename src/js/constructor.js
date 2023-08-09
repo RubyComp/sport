@@ -137,32 +137,33 @@ document.addEventListener('DOMContentLoaded', function () {
 	////////////////////////////////
 	// File drop
 
-	const fileDropBox = document.getElementById('file-drop__box');
-	const fileMsg = fileDropBox.querySelector('.file-drop__msg');
-	const fileInput = fileDropBox.querySelector('.file-drop__input');
+const fileDropBox = document.getElementById('file-drop__box');
+const fileMsg = fileDropBox.querySelector('.file-drop__msg');
+const fileInput = fileDropBox.querySelector('.file-drop__input');
+const body = document.body
 
-	fileDropBox.addEventListener('dragover', (event) => {
-		event.preventDefault();
-		fileDropBox.classList.add('file-drop__box--highlight');
-		fileMsg.textContent = 'Отпустите файлы для загрузки…';
-	});
- 
-	fileDropBox.addEventListener('dragleave', () => {
-		fileDropBox.classList.remove('file-drop__box--highlight');
-		fileMsg.textContent = 'Перетащите файлы сюда, чтобы загрузить…';
-	});
- 
-	fileDropBox.addEventListener('drop', (event) => {
-		event.preventDefault();
-		fileDropBox.classList.remove('file-drop__box--highlight');
-		const files = event.dataTransfer.files;
-		fileMsg.textContent = `Выбрано файлов: ${files.length}`;
-		fileInput.files = files;
-	});
+body.addEventListener('dragover', (event) => {
+	event.preventDefault();
+	fileDropBox.classList.add('file-drop__box--highlight');
+	// fileMsg.textContent = 'Отпустите файлы для загрузки…';
+});
 
-	fileInput.addEventListener('change', () => {
-		const files = fileInput.files;
-		fileMsg.textContent = `Выбрано файлов: ${files.length}`;
-	});
+body.addEventListener('dragleave', () => {
+	fileDropBox.classList.remove('file-drop__box--highlight');
+	// fileMsg.textContent = 'Перетащите файлы сюда, чтобы загрузить…';
+});
+
+body.addEventListener('drop', (event) => {
+	event.preventDefault();
+	fileDropBox.classList.remove('file-drop__box--highlight');
+	const files = event.dataTransfer.files;
+	fileMsg.textContent = `Выбрано файлов: ${files.length}`;
+	fileInput.files = files;
+});
+
+fileInput.addEventListener('change', () => {
+	const files = fileInput.files;
+	fileMsg.textContent = `Выбрано файлов: ${files.length}`;
+});
 
 })

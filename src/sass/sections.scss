@@ -157,10 +157,23 @@
 				margin-bottom: 2.5rem;
 			}
 		}
+
+		.carousel-wrapper {
+			
+			@include sm-and-less {
+				display: grid;
+				grid-template-columns: repeat(3, 320px);
+				width: 100%;
+			}
+			> section {
+				flex-basis: calc(100% / 3);
+			}
+		}
 	}
 }
 
 .poduct {
+	display: flex;
 	align-items: center;
 	background-color: var(--back-color);
 	background-image: var(--carbon-gradient);
@@ -227,6 +240,10 @@
 	&__note {
 		color: var(--light-grey-color);
 		line-height: 1.44em;
+		@include md {
+			line-height: 1.3em;
+			margin-bottom: .25rem;
+		}
 		@include sm-and-less {
 			font-size: 12px;
 			line-height: 1.3em;
@@ -410,6 +427,9 @@
 		@include sm-and-less {
 			margin-top: 6.5rem;
 		}
+		.focus-title {
+			margin-bottom: 2rem;
+		}
 	}
 
 	&__slider {
@@ -521,8 +541,14 @@
 		width: 100%;
 		overflow-x: hidden;
 
+
+		@include sm-and-less() {
+			.container {
+				padding: 0 1rem;
+			}
+		}
+
 		&::before {
-			background-color: coral;
 			background-image: url($imgPath + 'runner.jpg');
 			background-position: center;
 			background-repeat: no-repeat;
@@ -630,6 +656,14 @@
 			margin-top: 1.7rem;
 			justify-content: space-between;
 			padding-right: 2rem;
+		}
+		@include xs {
+			gap: 1rem;
+			padding-right: initial;
+
+			> section:nth-child(2) {
+				margin-left: 1rem;
+			}
 		}
 
 		header {

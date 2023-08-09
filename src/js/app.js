@@ -37,8 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 
-
-
 	////////////////////////////////
 	// Cookie
 
@@ -85,91 +83,110 @@ document.addEventListener('DOMContentLoaded', function () {
 	// checkScrollPosition()
 	// window.addEventListener('scroll', checkScrollPosition)
 
-	/* */
 
-	const carousel = document.querySelector('.carousel')
+	////////////////////////////////
+	// Slider
 
-	if (carousel) {
+class Carousel {
+	constructor(carousel) {
+		this.carousel = carousel;
+		this.carouselWidth = this.carousel.offsetWidth;
+		this.carouselContent = carousel.querySelector('.carousel-wrapper')
+		this.carouselItems = Array.from(this.carouselContent.children)
+		this.carouselItemsCount = this.carouselItems.length
+		this.activeIndex = 0
+		this.dragging = false
+		this.scrollDiff = 0
+		this.scrollX = 0
+		this.startX = 0
+		this.currentTranslate = 0
+		this.slideWidth = this.carouselItems[0].offsetWidth
+		this.sliderFullWidth = this.slideWidth * this.carouselItemsCount
+		this.maxTranslete = this.sliderFullWidth - this.carouselWidth
 
-		const firstImg = document.querySelectorAll('.carousel section')[0]
+		this.handleMouseDown = this.handleMouseDown.bind(this)
+		this.handleMouseMove = this.handleMouseMove.bind(this)
+		this.handleMouseUp = this.handleMouseUp.bind(this)
 
-		// const arrowIcons = document.querySelectorAll('.carousel-wrapper i')
+		carousel.addEventListener('mousedown', this.handleMouseDown)
+		carousel.addEventListener('touchstart', this.handleMouseDown)
 
-		let isDragStart = false,
-			isDragging = false,
-			prevPageX,
-			prevScrollLeft,
-			positionDiff
+		carousel.addEventListener('mousemove', this.handleMouseMove)
+		carousel.addEventListener('touchmove', this.handleMouseMove)
 
-		// arrowIcons.forEach((icon) => {
-		// 	icon.addEventListener('click', () => {
-		// 		let firstImgWidth = firstImg.clientWidth + 14 // getting first img width & adding 14 margin value
-		// 		// if clicked icon is left, reduce width value from the carousel scroll left else add to it
-		// 		carousel.scrollLeft += icon.id == 'left' ? -firstImgWidth : firstImgWidth
-		// 	})
-		// })
-
-		const autoSlide = () => {
-			// if there is no image left to scroll then return from here
-			if (carousel.scrollLeft == carousel.scrollWidth - carousel.clientWidth)
-				return
-
-			positionDiff = Math.abs(positionDiff) // making positionDiff value to positive
-			let firstImgWidth = firstImg.clientWidth + 14
-			// getting difference value that needs to add or reduce from carousel left to take middle img center
-			let valDifference = firstImgWidth - positionDiff
-
-			if (carousel.scrollLeft > prevScrollLeft) {
-				// return console.log('user is scrolling to the right')
-				// if user is scrolling to the right
-				return (carousel.scrollLeft +=
-					positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff)
-			}
-			//   console.log('user is scrolling to the left')
-			// if user is scrolling to the left
-			carousel.scrollLeft -=
-				positionDiff > firstImgWidth / 3 ? valDifference : -positionDiff
-		}
-
-		const dragStart = (e) => {
-			// updating global variables value on mouse down event
-			isDragStart = true
-			prevPageX = e.pageX || e.touches[0].pageX
-			prevScrollLeft = carousel.scrollLeft
-		}
-
-		const dragging = (e) => {
-			// scrolling images/carousel to left according to mouse pointer
-			if (!isDragStart) return
-			e.preventDefault()
-			isDragging = true
-			carousel.classList.add('dragging')
-			positionDiff = (e.pageX || e.touches[0].pageX) - prevPageX
-			carousel.scrollLeft = prevScrollLeft - positionDiff
-		}
-
-		const dragStop = () => {
-			isDragStart = false
-			carousel.classList.remove('dragging')
-
-			if (!isDragging) return
-				isDragging = false
-				autoSlide()
-		}
-
-		carousel.addEventListener('mousedown', dragStart)
-		carousel.addEventListener('touchstart', dragStart)
-
-		carousel.addEventListener('mousemove', dragging)
-		carousel.addEventListener('touchmove', dragging)
-
-		carousel.addEventListener('mouseup', dragStop)
-		carousel.addEventListener('mouseleave', dragStop)
-		carousel.addEventListener('touchend', dragStop)
-
+		carousel.addEventListener('mouseup', this.handleMouseUp)
+		carousel.addEventListener('mouseleave', this.handleMouseUp)
+		carousel.addEventListener('touchend', this.handleMouseUp)
 	}
 
-	/**/
+	handleMouseDown(e) {
+		this.dragging = true;
+		this.startX = e.pageX || e.touches[0].pageX
+		this.carousel.classList.add('dragging')
+	}
+
+	handleMouseMove(e) {
+		if (!this.dragging) return;
+	
+		e.preventDefault()
+
+		this.scrollX = e.pageX || e.touches[0].pageX || 0
+		this.scrollDiff = this.scrollX - this.startX;
+
+		this.updateTranslate(this.currentTranslate + this.scrollDiff)
+		this.scrollDiff = 0;
+		this.startX = this.scrollX;
+	}
+
+	updateTranslate(value) {
+		if (value > 0) {
+			value *= 0.78;
+		} else if (value < -this.maxTranslete) {
+			const overflow = value + this.maxTranslete;
+			value = -this.maxTranslete - Math.pow(-overflow, 0.9)
+		}
+
+		this.currentTranslate = 0 + value
+		this.setTranslate(this.currentTranslate)
+		requestAnimationFrame(() => {
+			this.translate()
+		});
+	}
+
+	setTranslate(value) {
+		this.currentTranslate = value
+		this.translate()
+	}
+	translate() {
+		this.carouselContent.style.transform = `translateX(${this.currentTranslate}px)`
+	}
+
+	handleMouseUp() {
+		if (!this.dragging) return
+
+		this.dragging = false;
+		this.carousel.classList.remove('dragging')
+
+		if (this.currentTranslate > 0) {
+			this.currentTranslate = 0;
+		} else if (this.currentTranslate < -this.maxTranslete) {
+			this.currentTranslate = -this.maxTranslete;
+		}
+		this.setTranslate(this.currentTranslate);
+	}
+
+}
+
+	const carousels = document.querySelectorAll('.carousel');
+
+	setTimeout(() => {
+		carousels.forEach((carousel) => new Carousel(carousel));
+	}, 1000);
+
+
+	////////////////////////////////
+	// Accordion
+
 	const sections = document.querySelectorAll('.accordion__section')
 
 	if (sections) {
