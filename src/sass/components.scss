@@ -467,6 +467,9 @@ strong {
 	@include sm-and-less() {
 		grid-template-columns: 1fr;
 	}
+	@include xs() {
+		display: block;
+	}
 
 }
 
@@ -506,7 +509,7 @@ strong {
 		}
 		@include xs() {
 			img {
-				max-width: 240px;
+				width: 100%;
 			}
 			display: block;
 		}
@@ -557,10 +560,20 @@ strong {
 	padding: 2rem 0 0 2rem;
 
 	@include sm-and-less() {
-		padding: 2rem 1rem;
+		padding: 0;
 
-		* {
-			max-width: calc(100vw - 2rem);
+		.number {
+			overflow: hidden;
+		}
+	}
+
+	@include xs() {
+		.decrease-numb,
+		.increase-numb {
+			width: 40px;
+		}
+		.number input {
+			padding: 0;
 		}
 	}
 

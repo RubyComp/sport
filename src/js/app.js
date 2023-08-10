@@ -120,6 +120,7 @@ class Carousel {
 	}
 
 	handleMouseDown(e) {
+		if (this.sliderFullWidth <= window.innerWidth) return
 		this.dragging = true;
 		this.startX = e.pageX || e.touches[0].pageX
 		this.carousel.classList.add('dragging')
@@ -171,6 +172,8 @@ class Carousel {
 			this.currentTranslate = 0;
 		} else if (this.currentTranslate < -this.maxTranslete) {
 			this.currentTranslate = -this.maxTranslete;
+		} else {
+			console.log(111111);
 		}
 		this.setTranslate(this.currentTranslate);
 	}
