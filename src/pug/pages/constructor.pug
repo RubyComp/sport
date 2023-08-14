@@ -10,7 +10,7 @@ block content
 			h1.focus-title #{title}
 			div.product-preview__box
 				picture.product-preview__picture
-					img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
+					img(src=imgPath + "", alt="")
 				div.product-preview__total
 					div.product-preview__price
 						section
@@ -19,7 +19,7 @@ block content
 						section
 							span Общая стоимость
 							b#total-price 31&nbsp;500&nbsp;₽
-					button.btn.btn_primary Отправить Запрос
+					button.btn.btn_primary.show-modal(data-modal="callback") Отправить Запрос
 					footer.product-preview__note Указана предварительная стоимость, окончательную стоимость рассчитает наш менеджер
 
 		div.product-form
@@ -27,7 +27,7 @@ block content
 			.accordion__block
 				section.accordion__section
 					.accordion__question Сроки
-					.accordion__answer Стандартный срок производства заказа 10-15 рабочих дней. Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
+					.accordion__answer Стандартный срок производства заказа 10-15 рабочих дней с&nbsp;момента утверждения макета. Есть возможность произвести заказ в&nbsp;сжатые сроки (от&nbsp;3&nbsp;до&nbsp;7&nbsp;дней), за&nbsp;срочность мы&nbsp;берем дополнительную наценку 20-50%.
 				section.accordion__section
 					.accordion__question Описание
 					.accordion__answer Высылаем Вам бриф (список вопросов) для составления технического задания.Также, в&nbsp;письме&nbsp;Вы получите наш каталог уже реализованных дизайнов. На&nbsp;основании заполненного брифа, мы&nbsp;согласовываем с&nbsp;Вами устное тз&nbsp;с&nbsp;примерами, озвучиваем стоимость дизайна и&nbsp;приступаем к&nbsp;работе, после получения предоплаты за&nbsp;дизайн. Срок разработки одного дизайна, с&nbsp;учетом внесения правок, 4-7 рабочих дней.
@@ -40,6 +40,22 @@ block content
 			form.dark-form(action="").constructor#constructor
 
 				input(type="hidden" name="base-cost" data-cost="0" id="base-cost")
+
+				fieldset.text-radio.text-radio_footered
+					legend Вид формы
+					.text-radio__buttons.text-radio__buttons_triple
+						input(type="radio", name="type", id="type-training" data-cost="1590")
+						label(for="type-training")
+							span Training
+							footer от 1590₽
+						input(type="radio", name="type", id="type-game" data-cost="2190" checked)
+						label(for="type-game")
+							span Game
+							footer от 2190₽
+						input(type="radio", name="type", id="type-pro" data-cost="2990")
+						label(for="type-pro")
+							span Pro
+							footer от 2990₽
 
 				fieldset.text-radio
 					legend Гендер
@@ -54,7 +70,7 @@ block content
 				fieldset.text-radio
 					legend Возраст
 					.text-radio__buttons
-						input(type="radio", name="age", id="age-child" data-cost="0")
+						input(type="radio", name="age", id="age-child" data-cost="-300")
 						label(for="age-child")
 							span Дети
 						input(type="radio", name="age", id="age-adult" data-cost="0")
@@ -68,39 +84,24 @@ block content
 						input(type="number" min="1" value="1" name="count" id="count")
 						input(type="button", value="+"  class="increase-numb")
 
-				fieldset.text-radio.text-radio_footered
-					legend Вид формы
-					.text-radio__buttons.text-radio__buttons_triple
-						input(type="radio", name="type", id="type-training" data-cost="800")
-						label(for="type-training")
-							span Training
-							footer от 800₽
-						input(type="radio", name="type", id="type-pro" data-cost="1500" checked)
-						label(for="type-pro")
-							span Pro
-							footer от 1500₽
-						input(type="radio", name="type", id="type-game" data-cost="1200")
-						label(for="type-game")
-							span Game
-							footer от 1200₽
-
 				fieldset.text-radio
 					legend Рукав
 					.text-radio__buttons
 						input(type="radio", name="arm", id="arm-short" data-cost="0")
 						label(for="arm-short")
 							span Короткий
-						input(type="radio", name="arm", id="arm-long" data-cost="0")
+						input(type="radio", name="arm", id="arm-long" data-cost="300")
 						label(for="arm-long")
 							span Длинный
+							footer +300₽
 
 				fieldset.text-radio.text-radio_footered
 					legend Требуется разработать дизайн
 					.text-radio__buttons
-						input(type="radio", name="design", id="design-yes" data-cost="800")
+						input(type="radio", name="design", id="design-yes" data-cost="0" data-global-cost="2500")
 						label(for="design-yes")
 							span Да
-							footer +800₽
+							footer +2500₽ (к общей сумме)
 						input(type="radio", name="design", id="design-no" data-cost="0")
 						label(for="design-no")
 							span Нет
@@ -116,34 +117,69 @@ block content
 							input.file-drop__input(type="file" id="files-design" multiple accept=files)
 						.file-drop__note #{files}
 
-				fieldset.text-select
-					legend Виды материалов
-					.text-select
-						.text-select__input
-							input.text-select__field(type="text" placeholder="Выберите материал" readonly data-cost="0")
-						.text-select__options
-							.option(data-value="Первый материал" data-cost="0") Первый материал
-							.option(data-value="Второй материал" data-cost="100") Второй материал
-							.option(data-value="Третий материал" data-cost="200") Третий материал
+				//- fieldset.text-select
+				//- 	legend Виды материалов
+				//- 	.text-select
+				//- 		.text-select__input
+				//- 			input.text-select__field(type="text" placeholder="Выберите материал" readonly data-cost="0")
+				//- 		.text-select__options
+				//- 			.option(data-value="Первый материал" data-cost="0") Первый материал
+				//- 			.option(data-value="Второй материал" data-cost="100") Второй материал
+				//- 			.option(data-value="Третий материал" data-cost="200") Третий материал
+
+				fieldset.text-checkboxes
+					legend Будут ли дополнительные нанесения?
+					.text-checkboxes__buttons.text-checkboxes__buttons_compact
+
+						input(type="checkbox", name="print", id="print-number" data-cost="0")
+						label(for="print-number")
+							span Номер игрока
+
+						input(type="checkbox", name="print", id="print-individ" data-cost="0")
+						label(for="print-individ")
+							span Индивидуальный принт
+
+						input(type="checkbox", name="print", id="print-name" data-cost="0")
+						label(for="print-name")
+							span Фамилия игрока
+
+						input(type="checkbox", name="print", id="print-sponsor" data-cost="0")
+						label(for="print-sponsor")
+							span Нейминг спонсора команды
+
+						input(type="checkbox", name="print", id="print-emblem" data-cost="0")
+						label(for="print-emblem")
+							span Эмблема клуба
+
+						input(type="checkbox", name="print", id="print-other" data-cost="0")
+						label(for="print-other")
+							span Другие нанесения
+
+					.text-checkboxes__note Стоимость нанесений рассчитывается индивидуально в&nbsp;зависимости от&nbsp;вида, размера и&nbsp;способа нанесения.
 
 				fieldset.text-checkboxes.text-checkboxes_footered
 					legend Добавьте к комплектации
 					.text-checkboxes__buttons
-						input(type="checkbox", name="extra", id="extra-gaiters" data-cost="800")
+						input(type="checkbox", name="extra", id="extra-gaiters" data-cost="490")
 						label(for="extra-gaiters")
 							span Гетры
-							footer +800₽
-						input(type="checkbox", name="extra", id="extra-bad" data-cost="1200")
-						label(for="extra-bad")
-							span Сумка
-							footer +1200₽
-						input(type="checkbox", name="extra", id="extra-pennant" data-cost="800")
-						label(for="extra-pennant")
-							span Вымпел
-							footer +800₽
-						input(type="checkbox", name="extra", id="extra-chevrons" data-cost="1200")
-						label(for="extra-chevrons")
-							span Шевроны
-							footer +1200₽
+							footer +490₽
+						input(type="checkbox", name="extra", id="extra-socks" data-cost="220")
+						label(for="extra-socks")
+							span Носки
+							footer +220₽
+
+						//- input(type="checkbox", name="extra", id="extra-bad" data-cost="1200")
+						//- label(for="extra-bad")
+						//- 	span Сумка
+						//- 	footer +1200₽
+						//- input(type="checkbox", name="extra", id="extra-pennant" data-cost="800")
+						//- label(for="extra-pennant")
+						//- 	span Вымпел
+						//- 	footer +800₽
+						//- input(type="checkbox", name="extra", id="extra-chevrons" data-cost="1200")
+						//- label(for="extra-chevrons")
+						//- 	span Шевроны
+						//- 	footer +1200₽
 
 	script(src="/js/constructor.js")

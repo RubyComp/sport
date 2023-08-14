@@ -64,6 +64,12 @@ h6 {
 	}
 }
 
+.block-note {
+	color: var(--light-grey-color);
+	margin-top: 1rem;
+	text-align: center;
+}
+
 strong {
 	font-weight: inherit;
 	color: var(--accent-color);
@@ -280,7 +286,7 @@ strong {
 			}
 		}
 		&_footered {
-			padding-bottom: 1.5rem;
+			padding-bottom: 1.25rem;
 		}
 		label {
 			cursor: pointer;
@@ -309,6 +315,10 @@ strong {
 			flex-wrap: wrap;
 			gap: 2.5rem 0;
 
+			&_compact {
+				gap: 2rem 0;
+			}
+
 			label {
 				flex-basis: 50%;
 				flex-grow: 1;
@@ -319,6 +329,13 @@ strong {
 					flex-basis: 33.33%;
 				}
 			}
+		}
+		&__note {
+			color: var(--light-grey-color);
+			font-size: 14px;
+			margin: 1rem auto 0;
+			max-width: 520px;
+			text-align: center;
 		}
 	}
 	a {
@@ -504,6 +521,13 @@ strong {
 		display: flex;
 		justify-content: center;
 		padding: 4rem 1rem;
+		min-height: 279px;
+
+		img {
+			max-width: 80%;
+			opacity: .95;
+		}
+
 		@include sm-and-less() {
 			border-width: 1px;
 		}

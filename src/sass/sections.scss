@@ -532,15 +532,14 @@
 .about {
 
 	&-section {
-		margin-top: 9.5rem;
-		padding-bottom: 9.6rem;
-		z-index: -1;
-		position: relative;
 		display: flex;
 		justify-content: center;
-		width: 100%;
+		margin-top: 9.5rem;
 		overflow-x: hidden;
-
+		padding-bottom: 9.6rem;
+		position: relative;
+		width: 100%;
+		z-index: -1;
 
 		@include sm-and-less() {
 			.container {
@@ -555,7 +554,7 @@
 			background-size: cover;
 			content: '';
 			display: block;
-			height: 1080px;
+			height: 940px;
 			position: absolute;
 			transform: translate(280px, 68px);
 			width: 1000px;
@@ -564,7 +563,7 @@
 			@include md {
 				transform: translate(124px, 0);
 				height: 96%;
-				height: 1090px;
+				height: 980px;
 			}
 			@include sm {
 				transform: translate(140px, -60px);
@@ -848,19 +847,42 @@
 	}
 	&__value {
 		color: var(--accent-color);
+		display: grid;
 		font-family: arial;
 		font-size: 35px;
+		grid-template-columns: 2fr 1fr 2fr 1fr 2fr 1fr 2fr;
 		letter-spacing: -0.01em;
+		grid-gap: .25rem;
+		max-width: 300px;
+		margin: auto;
+
 		@include sm-and-less {
 			font-size: 25px;
 		}
 
-		span+span:before {
-			content: ':';
-		}
+		// span+span:before {
+		// 	content: ':';
+		// }
+	}
+	&__label {
+		font-size: 11px;
+		font-family: var(--accent-font);
+		text-transform: uppercase;
+		opacity: .9;
 	}
 }
-
+#days-label {
+	grid-column: 1;
+}
+#hours-label {
+	grid-column: 3;
+}
+#minutes-label {
+	grid-column: 5;
+}
+#seconds-label {
+	grid-column: 7;
+}
 
 .faq {
 	&-section {

@@ -16,26 +16,30 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Функция для обновления цен
 	function updatePrices() {
 		let singlePrice = 0
+		let globalCost = 0
 		let totalPrice = 0
 
 		// Проходимся по всем элементам формы, чтобы найти выбранные опции
-		const selectedOptions = form.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked, #base-cost, .text-select__field')
+		const selectedOptions = form.querySelectorAll('input[type="checkbox"]:checked, input[type="radio"]:checked, #base-cost, .text-select__field');
 
 		selectedOptions.forEach((option) => {
-			// Считываем значение из атрибута "data-cost" и прибавляем его к ценам
-			const cost = parseInt(option.dataset.cost)
+			const cost = parseInt(option.dataset.cost) || 0;
+			const globalCostValue = parseInt(option.dataset.globalCost) || 0
+
 			singlePrice += cost
-			totalPrice += cost
+			globalCost += globalCostValue
 		})
 
 		// Умножаем общую цену на количество копий
 		const count = parseInt(countElement.value)
-		totalPrice = singlePrice * count
+		totalPrice = singlePrice * count + globalCost
 
 		// Обновляем значения в элементах
 		singlePriceElement.textContent = validPrice(singlePrice)
 		totalPriceElement.textContent = validPrice(totalPrice)
-	}
+  }
+  
+
 	updatePrices()
 
 	// Обработчики событий для обновления цен при изменении формы
@@ -137,33 +141,68 @@ document.addEventListener('DOMContentLoaded', function () {
 	////////////////////////////////
 	// File drop
 
-const fileDropBox = document.getElementById('file-drop__box');
-const fileMsg = fileDropBox.querySelector('.file-drop__msg');
-const fileInput = fileDropBox.querySelector('.file-drop__input');
-const body = document.body
+	const fileDropBox = document.getElementById('file-drop__box');
+	const fileMsg = fileDropBox.querySelector('.file-drop__msg');
+	const fileInput = fileDropBox.querySelector('.file-drop__input');
+	const body = document.body
 
-body.addEventListener('dragover', (event) => {
-	event.preventDefault();
-	fileDropBox.classList.add('file-drop__box--highlight');
-	// fileMsg.textContent = 'Отпустите файлы для загрузки…';
-});
+	body.addEventListener('dragover', (event) => {
+		event.preventDefault();
+		fileDropBox.classList.add('file-drop__box--highlight');
+		// fileMsg.textContent = 'Отпустите файлы для загрузки…';
+	});
 
-body.addEventListener('dragleave', () => {
-	fileDropBox.classList.remove('file-drop__box--highlight');
-	// fileMsg.textContent = 'Перетащите файлы сюда, чтобы загрузить…';
-});
+	body.addEventListener('dragleave', () => {
+		fileDropBox.classList.remove('file-drop__box--highlight');
+		// fileMsg.textContent = 'Перетащите файлы сюда, чтобы загрузить…';
+	});
 
-body.addEventListener('drop', (event) => {
-	event.preventDefault();
-	fileDropBox.classList.remove('file-drop__box--highlight');
-	const files = event.dataTransfer.files;
-	fileMsg.textContent = `Выбрано файлов: ${files.length}`;
-	fileInput.files = files;
-});
+	body.addEventListener('drop', (event) => {
+		event.preventDefault();
+		fileDropBox.classList.remove('file-drop__box--highlight');
+		const files = event.dataTransfer.files;
+		fileMsg.textContent = `Выбрано файлов: ${files.length}`;
+		fileInput.files = files;
+	});
 
-fileInput.addEventListener('change', () => {
-	const files = fileInput.files;
-	fileMsg.textContent = `Выбрано файлов: ${files.length}`;
-});
+	fileInput.addEventListener('change', () => {
+		const files = fileInput.files;
+		fileMsg.textContent = `Выбрано файлов: ${files.length}`;
+	});
+
+	////////////////////////////////
+	// Images
+	const sports = [
+		'athletics',
+		'basketball',
+		'boxing',
+		'cybersport',
+		'football',
+		'hockey',
+		'rugby',
+		'struggle',
+		'tennis',
+		'volleyball',
+	]
+
+	// Получаем значение атрибута "sport" из адресной строки
+	const urlParams = new URLSearchParams(window.location.search);
+	const sportParam = urlParams.get('sport');
+
+	// Проверяем, есть ли значение атрибута "sport" в массиве sports
+	if (sports.includes(sportParam)) {
+		// Формируем путь к картинке с использованием значения атрибута
+		const imageUrl = `/resources/images/products/${sportParam.toUpperCase()}.png`;
+		
+		// Находим элемент <img> и обновляем атрибут src
+		const imgElement = document.querySelector('.product-preview__picture img');
+			imgElement.src = imageUrl;
+	} else {
+		// Если значение атрибута не найдено в массиве sports, задаем картинку по умолчанию
+		const defaultImageUrl = '/resources/images/products/other.png';
+		const imgElement = document.querySelector('.product-preview__picture img');
+		imgElement.src = defaultImageUrl;
+	}
+
 
 })

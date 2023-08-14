@@ -2,41 +2,53 @@ extends ../templates/common
 
 block vars
 	- const title = 'Виды спорта'
+	- const constructor = '/constructor.html'
 
 block content
 	.container.products-grid
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-1.png", alt="Футбол")
+		a(href=constructor + "?sport=football")
+			img(src=imgPath + "products/football.png", alt="Футбол")
 			span Футбол
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-3.png", alt="Баскетбол")
+		a(href=constructor + "?sport=basketball")
+			img(src=imgPath + "products/basketball.png", alt="Баскетбол")
 			span Баскетбол
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-1.png", alt="Волейбол")
+		a(href=constructor + "?sport=volleyball")
+			img(src=imgPath + "products/volleyball.png", alt="Волейбол")
 			span Волейбол
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-2.png", alt="Регби")
+		a(href=constructor + "?sport=rugby")
+			img(src=imgPath + "products/rugby.png", alt="Регби")
 			span Регби
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-1.png", alt="Киберспорт")
+		a(href=constructor + "?sport=cybersport")
+			img(src=imgPath + "products/cybersport.png", alt="Киберспорт")
 			span Киберспорт
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-2.png", alt="Легкая атлетика")
+		a(href=constructor + "?sport=athletics")
+			img(src=imgPath + "products/athletics.png", alt="Легкая атлетика")
 			span Легкая атлетика
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-1.png", alt="Борьба")
+		a(href=constructor + "?sport=struggle")
+			img(src=imgPath + "products/struggle.png", alt="Борьба")
 			span Борьба
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-2.png", alt="Бокс")
+		a(href=constructor + "?sport=boxing")
+			img(src=imgPath + "products/boxing.png", alt="Бокс")
 			span Бокс
 
-		a(href="/category.html")
-			img(src=imgPath + "products/shirt-1.png", alt="Другое")
+		a(href=constructor + "?sport=tennis")
+			img(src=imgPath + "products/tennis.png", alt="Теннис")
+			span Теннис
+
+		a(href=constructor + "?sport=hockey")
+			img(src=imgPath + "products/hockey.png", alt="Хоккей")
+			span Хоккей
+
+		a(href=constructor + "?sport=other")
+			img(src=imgPath + "products/other.png", alt="Другое")
 			span Другое
+
+
+

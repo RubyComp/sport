@@ -47,6 +47,7 @@ block content
 		.container
 			h2.focus-title Создайте свою экипировку
 		include ../modules/slider
+		.container.block-note * цены указаны за один комплект «шорты+футболка»
 
 	section.tech-section
 		.container
@@ -90,7 +91,7 @@ block content
 					div Ткань отводить влагу и&nbsp;сохраняет прохладу и&nbsp;комфорт во&nbsp;время интенсивных тренировок
 
 	section.man-section
-		.container.man-icons
+		a(href="/categories.html").container.man-icons
 			img(src=imgPath + "icons/mans/man-1.svg", alt="")
 			img(src=imgPath + "icons/mans/man-2.svg", alt="")
 			img(src=imgPath + "icons/mans/man-3.svg", alt="")
@@ -103,7 +104,7 @@ block content
 			img(src=imgPath + "icons/mans/man-10.svg", alt="")
 			img(src=imgPath + "icons/mans/man-11.svg", alt="")
 		.container.btn-line
-			a.btn.btn_primary(href="/category.html") Выбрать экипировку
+			a.btn.btn_primary(href="/categories.html") Выбрать экипировку
 
 	section.examples-section
 		.container
@@ -191,16 +192,18 @@ block content
 			.about__text
 				p essko&nbsp;&mdash; компания по&nbsp;произовдству спортивной повседневной одежды и&nbsp;экипировки на&nbsp;заказ. Мы&nbsp;предлогаем качественную, функциональную и&nbsp;стильную одежду для спортивных команд, школ&nbsp;и&nbsp;академий различных видов спорта.
 				p В&nbsp;своем производстве используем широкий ассортимент современных качественных материалов. Приобретайте essko и&nbsp;наслаждайтесь комфортом и&nbsp;качеством в&nbsp;каждой детали.
-			.about__achievements
-				section
-					header 12
-					footer Лет работы
-				section
-					header >30
-					footer Проектов
-				section
-					header 18
-					footer Крупных проектов
+			//- change .about::before height if .about-section content will changed
+
+			//- .about__achievements
+				//- section
+				//- 	header 12
+				//- 	footer Лет работы
+				//- section
+				//- 	header >30
+				//- 	footer Проектов
+				//- section
+				//- 	header 18
+				//- 	footer Крупных проектов
 
 
 	section.form-section
@@ -216,10 +219,19 @@ block content
 					.timer#timer
 						.timer__title Скидка действует
 						.timer__value
-							span#days &nbsp;&nbsp;
-							span#hours &nbsp;&nbsp;
-							span#minutes &nbsp;&nbsp;
-							span#seconds &nbsp;&nbsp;
+							#days &nbsp;&nbsp;
+							span :
+							#hours &nbsp;&nbsp;
+							span :
+							#minutes &nbsp;&nbsp;
+							span :
+							#seconds &nbsp;&nbsp;
+
+							.timer__label#days-label Дней
+							.timer__label#hours-label Часов
+							.timer__label#minutes-label Минут
+							.timer__label#seconds-label Секунд
+
 						//- 00:00:02:59
 
 					input(type="text" placeholder="имя")
