@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			e.preventDefault()
 
 			this.scrollX = e.clientX || e.touches[0].clientX || 0
-			this.scrollY = e.touches[0].clientY || 0
+			this.scrollY = e.clientY || e.touches[0].clientY || 0
 
 			const x = Math.abs(this.startX - this.scrollX)
 			const y = Math.abs(this.startY - this.scrollY)
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		handleMouseUp() {
-			// if (!this.dragging) return
+			if (!this.active) return
 
 			this.dragging = false;
 			this.carousel.classList.remove('dragging')
