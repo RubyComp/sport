@@ -513,6 +513,9 @@ strong {
 	&__box {
 		position: sticky;
 		top: 10px;
+		@include sm-and-less() {
+			position: relative;
+		}
 	}
 	&__picture {
 		border-width: 0 1px 0;
@@ -522,6 +525,9 @@ strong {
 		justify-content: center;
 		padding: 4rem 1rem;
 		min-height: 279px;
+		@include sm-and-less() {
+			margin-bottom: 1.5rem;
+		}
 
 		img {
 			max-width: 80%;
@@ -535,7 +541,7 @@ strong {
 			img {
 				width: 100%;
 			}
-			display: block;
+			display: flex;
 		}
 	}
 	&__price {
@@ -544,6 +550,10 @@ strong {
 		border: 1px solid var(--grey-color);
 		font-size: 19px;
 
+		@include sm-and-less() {
+			font-size: 14px;
+		}
+
 		> section {
 			flex-grow: 1;
 			flex-basis: 50%;
@@ -551,6 +561,9 @@ strong {
 			display: flex;
 			flex-direction: column;
 			gap: .25em;
+			@include sm-and-less() {
+				padding: .6rem .4rem .6rem .8rem;
+			}
 
 			&:nth-child(2) {
 				border-left: 1px solid var(--grey-color);
@@ -561,6 +574,15 @@ strong {
 
 	&__total {
 		
+		@include sm-and-less() {
+			background-color: var(--back-color);
+			bottom: 0;
+			font-size: 14px;
+			left: 0;
+			position: fixed;
+			width: 100%;
+			z-index: 2;
+		}
 		.btn {
 			width: 100%;
 		}
@@ -573,6 +595,12 @@ strong {
 		max-width: 400px;
 		margin: auto;
 		margin-top: 1rem;
+		margin-bottom: .75rem;
+		padding: .5rem;
+		@include sm-and-less() {
+			margin: .75rem auto;
+			font-size: 10px;
+		}
 	}
 	b {
 		font-weight: normal;

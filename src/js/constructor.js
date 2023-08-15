@@ -1,5 +1,23 @@
 document.addEventListener('DOMContentLoaded', function () {
 
+	function updatePosition() {
+		const totalBlock = document.querySelector('.product-preview__total');
+		const scrollHeight = document.documentElement.scrollHeight;
+		const windowHeight = window.innerHeight + 160
+		const scrollPosition = window.scrollY;
+
+		if (window.innerWidth < 1000 && scrollPosition >= scrollHeight - windowHeight) {
+			totalBlock.style.transform = 'translateY(100%)';
+		} else {
+			totalBlock.style.transform = 'translateY(0%)';
+		}
+	}
+
+	window.addEventListener('scroll', updatePosition);
+	window.addEventListener('resize', updatePosition);
+
+	updatePosition();
+
 	// Pricer
 	const form = document.getElementById("constructor")
 	const singlePriceElement = document.getElementById("single-price")
@@ -35,8 +53,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		totalPrice = singlePrice * count + globalCost
 
 		// Обновляем значения в элементах
-		singlePriceElement.textContent = validPrice(singlePrice)
-		totalPriceElement.textContent = validPrice(totalPrice)
+		singlePriceElement.textContent = validPrice(singlePrice) + '₽'
+		totalPriceElement.textContent = validPrice(totalPrice) + '₽'
   }
   
 
