@@ -382,6 +382,9 @@ button {
 
 #footer {
 	margin-top: 10rem;
+	@include sm-and-less() {
+		margin-top: 5rem;
+	}
 }
 
 .callback {

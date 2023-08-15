@@ -323,6 +323,11 @@ strong {
 				flex-basis: 50%;
 				flex-grow: 1;
 				text-align: center;
+				align-items: center;
+				@include sm-and-less() {
+					font-size: 14px;
+					padding: 1rem .5rem;
+				}
 			}
 			&_triple {
 				label {
