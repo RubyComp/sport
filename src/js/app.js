@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.dragging = false
 			this.scrollDiff = 0
 			this.scrollX = 0
+			this.scrollY = 0
 			this.startX = 0
 			this.currentTranslate = 0
 			this.mouseMove = 0
@@ -157,9 +158,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			const x = Math.abs(this.startX - this.scrollX)
 			const y = Math.abs(this.startY - this.scrollY)
 
-			if (y > 30) {
+			// console.log({x}, {y})
+
+			if (y > 20 && x > 0) {
 				this.dragging = false
-				console.log(1111111111)
+				this.scrollDiff = 0;
+				this.startX = this.scrollX;
+				return
 			}
 
 			this.scrollDiff = this.scrollX - this.startX;
@@ -202,7 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			if (auto && newTranslate < this.maxTranslete * -1)
 				newTranslate = 0
 
-			console.log('nexSlide', newTranslate)
+			// console.log('nexSlide', newTranslate)
 			this.setTranslate(newTranslate)
 		}
 
@@ -224,12 +229,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.setTranslate(newSlide)
 
 			this.mouseMove = 0
-			console.log({slidePos})
+			// console.log({slidePos})
 
 		}
 
-		handleMouseUp(e) {
-			if (!this.dragging) return
+		handleMouseUp() {
+			// if (!this.dragging) return
 
 			this.dragging = false;
 			this.carousel.classList.remove('dragging')
