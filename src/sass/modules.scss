@@ -109,6 +109,9 @@
 	&_wide {
 		--elements: 4;
 	}
+	&_super-wide {
+		--elements: 3;
+	}
 
 	@include md {
 		font-size: 12px;
