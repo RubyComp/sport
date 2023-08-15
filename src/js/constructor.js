@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	// Проверяем, есть ли значение атрибута "sport" в массиве sports
 	if (sports.includes(sportParam)) {
 		// Формируем путь к картинке с использованием значения атрибута
-		const imageUrl = `/resources/images/products/${sportParam.toUpperCase()}.png`;
+		const imageUrl = `/resources/images/products/${sportParam.toLowerCase()}.png`;
 		
 		// Находим элемент <img> и обновляем атрибут src
 		const imgElement = document.querySelector('.product-preview__picture img');

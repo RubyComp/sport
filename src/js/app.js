@@ -100,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.scrollX = 0
 			this.startX = 0
 			this.currentTranslate = 0
+			this.mouseMove = 0
 			this.slideWidth = this.carouselItems[0].offsetWidth
 			this.sliderFullWidth = this.slideWidth * this.carouselItemsCount
 			this.maxTranslete = this.sliderFullWidth - this.carouselWidth
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.carousel.style.cursor = 'initial'
 			} else {
 				this.timer = setInterval(() => {
-					this.nexSlide()
+					this.nexSlide(true)
 				}, 2000)
 			}
 
@@ -138,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				clearInterval(this.timer)
 				this.timer = null
 			}
+			this.mouseMove = 0
 		}
 
 		handleMouseMove(e) {
@@ -147,6 +149,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			this.scrollX = e.pageX || e.touches[0].pageX || 0
 			this.scrollDiff = this.scrollX - this.startX;
+
+			this.mouseMove += this.scrollDiff
 
 			this.updateTranslate(this.currentTranslate + this.scrollDiff)
 			this.scrollDiff = 0;
@@ -176,19 +180,25 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.carouselContent.style.transform = `translateX(${this.currentTranslate}px)`
 		}
 
-		nexSlide() {
-			let newTranslate = this.currentTranslate - this.slideWidth
-			if (newTranslate < this.maxTranslete * -1)
+		nexSlide(auto = false) {
+			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
+
+			let newTranslate = this.slideWidth * (slidePos + 1) * -1
+
+			if (auto && newTranslate < this.maxTranslete * -1)
 				newTranslate = 0
+
 			console.log('nexSlide', newTranslate)
 			this.setTranslate(newTranslate)
-			this.alignSlides()
 		}
 
-		// prevSlide(numb) {
-		// 	console.log({numb})
-		// 	this.setTranslate(newSlide)
-		// }
+		prevSlide(auto = false) {
+			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
+
+			let newTranslate = this.slideWidth * slidePos * -1
+
+			this.setTranslate(newTranslate)
+		}
 
 		alignSlides() {
 			const slidePos = Math.round(this.currentTranslate * -1 / this.slideWidth)
@@ -199,11 +209,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			this.setTranslate(newSlide)
 
+			this.mouseMove = 0
 			console.log({slidePos})
 
 		}
 
-		handleMouseUp() {
+		handleMouseUp(e) {
 			if (!this.dragging) return
 
 			this.dragging = false;
@@ -214,7 +225,11 @@ document.addEventListener('DOMContentLoaded', function () {
 			} else if (this.currentTranslate < -this.maxTranslete) {
 				this.currentTranslate = -this.maxTranslete;
 			} else {
-				this.alignSlides()
+
+				if (this.mouseMove < 0)
+					this.nexSlide()
+				else
+					this.prevSlide()
 			}
 			this.setTranslate(this.currentTranslate);
 		}
