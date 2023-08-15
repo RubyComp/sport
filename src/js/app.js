@@ -102,6 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.currentTranslate = 0
 			this.mouseMove = 0
 			this.slideWidth = this.carouselItems[0].offsetWidth
+			this.slideHeight = this.carouselItems[0].offsetWidth
 			this.sliderFullWidth = this.slideWidth * this.carouselItemsCount
 			this.maxTranslete = this.sliderFullWidth - this.carouselWidth
 			this.active = true
@@ -133,7 +134,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		handleMouseDown(e) {
 			if (!this.active) return
 			this.dragging = true;
-			this.startX = e.pageX || e.touches[0].pageX
+
+			this.startX = e.clientX || e.touches[0].clientX
+			this.startY = e.clientY || e.touches[0].clientY
+
 			this.carousel.classList.add('dragging')
 			if (this.timer) {
 				clearInterval(this.timer)
@@ -147,7 +151,17 @@ document.addEventListener('DOMContentLoaded', function () {
 		
 			e.preventDefault()
 
-			this.scrollX = e.pageX || e.touches[0].pageX || 0
+			this.scrollX = e.clientX || e.touches[0].clientX || 0
+			this.scrollY = e.touches[0].clientY || 0
+
+			const x = Math.abs(this.startX - this.scrollX)
+			const y = Math.abs(this.startY - this.scrollY)
+
+			if (y > 30) {
+				this.dragging = false
+				console.log(1111111111)
+			}
+
 			this.scrollDiff = this.scrollX - this.startX;
 
 			this.mouseMove += this.scrollDiff

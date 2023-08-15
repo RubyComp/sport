@@ -36,7 +36,6 @@ block content
 					.accordion__answer.accordion__answer_table
 						include ../modules/sizes-tables
 
-
 			form.dark-form(action="").constructor#constructor
 
 				input(type="hidden" name="base-cost" data-cost="0" id="base-cost")
@@ -96,16 +95,16 @@ block content
 							span Длинный
 							footer +300₽
 
-				fieldset.text-radio.text-radio_footered
+				fieldset.text-radio
 					legend Требуется разработать дизайн
 					.text-radio__buttons
 						input(type="radio", name="design", id="design-yes" data-cost="0" data-global-cost="2500")
 						label(for="design-yes")
 							span Да
-							footer +2500₽ (к общей сумме)
 						input(type="radio", name="design", id="design-no" data-cost="0")
 						label(for="design-no")
 							span Нет
+					.text-checkboxes__note Стоимость дизайна 2500₽ разово, независимо от количества комплектов.
 
 				fieldset.number
 					legend Загрузите свой дизайн 
