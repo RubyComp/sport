@@ -107,6 +107,8 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.sliderFullWidth = this.slideWidth * this.carouselItemsCount
 			this.maxTranslete = this.sliderFullWidth - this.carouselWidth
 			this.active = true
+			this.isLastSlide = false
+			this.isFirsSlide = true
 
 			if (this.sliderFullWidth <= window.innerWidth) {
 				this.active = false
@@ -114,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			} else {
 				this.timer = setInterval(() => {
 					this.nexSlide(true)
-				}, 1500)
+				}, 1000)
 				this.createNavigationButtons()
 			}
 
@@ -210,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.setTranslate(this.currentTranslate)
 			requestAnimationFrame(() => {
 				this.translate()
-			});
+			})
 		}
 
 		setTranslate(value) {
@@ -227,14 +229,30 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.timer = null
 			}
 			console.log('nexSlide')
+
+			if (this.isFirsSlide) {
+				// debugger
+				this.currentTranslate = 0
+			}
+
 			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
 
 			let newTranslate = this.slideWidth * (slidePos + 1) * -1
 
-			if (newTranslate < this.maxTranslete * -1)
+			// if (auto && newTranslate < this.maxTranslete * -1 && slidePos == this.carouselItemsCount)
+			if (this.isLastSlide) {
+				newTranslate = 0
+				this.isFirsSlide = true
+				this.isLastSlide = false
+			} else if (!this.isLastSlide && newTranslate <= this.maxTranslete * -1) {
+				this.isLastSlide = true
+				this.isFirsSlide = false
 				newTranslate = this.maxTranslete * -1
+			} else {
+				this.isFirsSlide = false
+			}
 
-			// console.log('nexSlide', newTranslate)
+			console.log('nexSlide', newTranslate, this.maxTranslete, newTranslate == this.maxTranslete * -1)
 			this.setTranslate(newTranslate)
 		}
 
@@ -250,6 +268,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			if (newTranslate > 0)
 				newTranslate = 0
+
+			if (slidePos <= 0 && newTranslate <= 0)
+				newTranslate = this.maxTranslete * -1
 
 			console.log({slidePos}, {newTranslate})
 			this.setTranslate(newTranslate)

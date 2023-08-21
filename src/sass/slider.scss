@@ -58,9 +58,11 @@
 		width: 20vw;
 		max-width: 90px;
 		cursor: pointer;
+		opacity: .75;
 
 		&:hover {
 			background-image: url($imgPath + 'icons/long-arrow-active.svg');
+			opacity: .95;
 		}
 
 		&.carousel-next-button {
