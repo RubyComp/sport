@@ -316,7 +316,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		const getNextDate = () => {
 			const currentDate = new Date()
-			const currentMonth = currentDate.getMonth()
+			let currentMonth = currentDate.getMonth()
 			let targetDay = 5
 		
 			if (currentDate.getDate() > 15) {
