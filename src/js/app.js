@@ -114,22 +114,43 @@ document.addEventListener('DOMContentLoaded', function () {
 			} else {
 				this.timer = setInterval(() => {
 					this.nexSlide(true)
-				}, 2000)
+				}, 1500)
+				this.createNavigationButtons()
 			}
 
 			this.handleMouseDown = this.handleMouseDown.bind(this)
 			this.handleMouseMove = this.handleMouseMove.bind(this)
 			this.handleMouseUp = this.handleMouseUp.bind(this)
 
-			carousel.addEventListener('mousedown', this.handleMouseDown)
-			carousel.addEventListener('touchstart', this.handleMouseDown)
+			// carousel.addEventListener('mousedown', this.handleMouseDown)
+			// carousel.addEventListener('touchstart', this.handleMouseDown)
 
-			carousel.addEventListener('mousemove', this.handleMouseMove)
-			carousel.addEventListener('touchmove', this.handleMouseMove)
+			// carousel.addEventListener('mousemove', this.handleMouseMove)
+			// carousel.addEventListener('touchmove', this.handleMouseMove)
 
-			carousel.addEventListener('mouseup', this.handleMouseUp)
-			carousel.addEventListener('mouseleave', this.handleMouseUp)
-			carousel.addEventListener('touchend', this.handleMouseUp)
+			// carousel.addEventListener('mouseup', this.handleMouseUp)
+			// carousel.addEventListener('mouseleave', this.handleMouseUp)
+			// carousel.addEventListener('touchend', this.handleMouseUp)
+		}
+
+		createNavigationButtons() {
+			this.navContainer = document.createElement('div')
+			this.navContainer.className = 'carousel-navigation'
+
+			this.prevButton = document.createElement('button')
+			this.prevButton.className = 'carousel-prev-button'
+			this.prevButton.setAttribute('title', 'Назад')
+			this.prevButton.addEventListener('click', () => this.prevSlide())
+
+			this.nextButton = document.createElement('button')
+			this.nextButton.className = 'carousel-next-button'
+			this.nextButton.setAttribute('title', 'Вперёд')
+			this.nextButton.addEventListener('click', () => this.nexSlide())
+
+			this.navContainer.appendChild(this.prevButton)
+			this.navContainer.appendChild(this.nextButton)
+
+			this.carousel.appendChild(this.navContainer)
 		}
 
 		handleMouseDown(e) {
@@ -140,6 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.startY = e.clientY || e.touches[0].clientY
 
 			this.carousel.classList.add('dragging')
+
 			if (this.timer) {
 				clearInterval(this.timer)
 				this.timer = null
@@ -200,22 +222,36 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		nexSlide(auto = false) {
+			if (!auto) {
+				clearInterval(this.timer)
+				this.timer = null
+			}
+			console.log('nexSlide')
 			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
 
 			let newTranslate = this.slideWidth * (slidePos + 1) * -1
 
-			if (auto && newTranslate < this.maxTranslete * -1)
-				newTranslate = 0
+			if (newTranslate < this.maxTranslete * -1)
+				newTranslate = this.maxTranslete * -1
 
 			// console.log('nexSlide', newTranslate)
 			this.setTranslate(newTranslate)
 		}
 
 		prevSlide(auto = false) {
+			if (!auto) {
+				clearInterval(this.timer)
+				this.timer = null
+			}
+			console.log('prevSlide')
 			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
 
-			let newTranslate = this.slideWidth * slidePos * -1
+			let newTranslate = this.slideWidth * (slidePos - 1) * -1
 
+			if (newTranslate > 0)
+				newTranslate = 0
+
+			console.log({slidePos}, {newTranslate})
 			this.setTranslate(newTranslate)
 		}
 
@@ -234,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		handleMouseUp() {
-			if (!this.active) return
+			if (!this.active || !this.dragging) return
 
 			this.dragging = false;
 			this.carousel.classList.remove('dragging')
@@ -255,11 +291,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	}
 
-	const carousels = document.querySelectorAll('.carousel');
+const carousels = document.querySelectorAll('.carousel');
 
-	setTimeout(() => {
-		carousels.forEach((carousel) => new Carousel(carousel))
-	}, 1000)
+setTimeout(() => {
+	carousels.forEach((carousel) => new Carousel(carousel))
+}, 1000)
 
 
 	////////////////////////////////
