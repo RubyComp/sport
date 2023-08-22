@@ -105,6 +105,12 @@ document.addEventListener('DOMContentLoaded', function () {
 			this.slideWidth = this.carouselItems[0].offsetWidth
 			this.slideHeight = this.carouselItems[0].offsetWidth
 			this.sliderFullWidth = this.slideWidth * this.carouselItemsCount
+			console.log(this.slideWidth)
+			// const children = this.carouselContent.children;
+			// for (let i = 0; i < children.length; i++) {
+			// 	this.sliderFullWidth += children[i].offsetWidth;
+			// }
+
 			this.maxTranslete = this.sliderFullWidth - this.carouselWidth
 			this.active = true
 			this.isLastSlide = false
@@ -116,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			} else {
 				this.timer = setInterval(() => {
 					this.nexSlide(true)
-				}, 1000)
+				}, 1750)
 				this.createNavigationButtons()
 			}
 
@@ -201,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		updateTranslate(value) {
+			debugger
 			if (value > 0) {
 				value *= 0.78;
 			} else if (value < -this.maxTranslete) {
@@ -228,13 +235,10 @@ document.addEventListener('DOMContentLoaded', function () {
 				clearInterval(this.timer)
 				this.timer = null
 			}
-			console.log('nexSlide')
 
-			if (this.isFirsSlide) {
-				// debugger
+			if (this.isFirsSlide)
 				this.currentTranslate = 0
-			}
-
+			
 			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
 
 			let newTranslate = this.slideWidth * (slidePos + 1) * -1
@@ -252,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				this.isFirsSlide = false
 			}
 
-			console.log('nexSlide', newTranslate, this.maxTranslete, newTranslate == this.maxTranslete * -1)
 			this.setTranslate(newTranslate)
 		}
 
@@ -261,7 +264,6 @@ document.addEventListener('DOMContentLoaded', function () {
 				clearInterval(this.timer)
 				this.timer = null
 			}
-			console.log('prevSlide')
 			const slidePos = Math.floor(this.currentTranslate * -1 / this.slideWidth)
 
 			let newTranslate = this.slideWidth * (slidePos - 1) * -1
@@ -431,5 +433,60 @@ setTimeout(() => {
 
 		setInterval(startCountdown, 1000)
 	}
+
+	function submitForm(event) {
+		event.preventDefault();
+
+		const form = event.target;
+		const formData = new FormData(form);
+  
+		const selectedRadios = form.querySelectorAll('input[type="radio"]:checked');
+		selectedRadios.forEach(radio => {
+			 formData.append(radio.name, radio.value);
+		});
+  
+		const selectedCheckboxes = form.querySelectorAll('input[type="checkbox"]:checked');
+		selectedCheckboxes.forEach(checkbox => {
+			 formData.append(checkbox.name, checkbox.value);
+		});
+  
+		const constructorForm = document.querySelector('#constructor'); // Получаем форму #constructor
+		if (constructorForm) {
+			 const constructorFormData = new FormData(constructorForm);
+  
+			 // Переносим данные из формы #constructor в основную форму
+			 constructorFormData.forEach((value, key) => {
+				  formData.append(key, value);
+			 });
+		}
+  
+		fetch('/form.php', {
+			 method: 'POST',
+			 body: formData
+		})
+		.then(response => response.text())
+		.then(data => {
+			 if (data === 'success') {
+				const newElement = document.createElement('p');
+				newElement.innerHTML ='<div class="sended">Спасибо за вашу заявку!</div>';
+				form.querySelector('input[type="submit"]').insertAdjacentElement('afterend', newElement);
+				form.querySelector('input[type="submit"]').remove();
+				  
+			 } else {
+				  console.log('Произошла ошибка при отправке формы');
+			 }
+		})
+		.catch(error => {
+			 console.error('Произошла ошибка:', error);
+		});
+  }
+  
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+		form.addEventListener('submit', submitForm);
+  });
+  
+
+
 
 })

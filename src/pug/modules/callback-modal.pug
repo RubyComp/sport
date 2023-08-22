@@ -4,11 +4,11 @@
 
 	header Осталось совсем&nbsp;чуть-чуть!
 	p Заполните данные и&nbsp;наш менеджер свяжется с&nbsp;вами для уточнения деталей
-	form.dark-form
-		input(type="text" placeholder="Имя")
-		input(type="email" placeholder="Эл. почта")
-		input(type="tel" placeholder="Телефон")
-		input(type="submit" value="Отправить")
+	form.dark-form(action="/form.php" method="post")
+		input(type="text" name="name" placeholder="Имя")
+		input(type="email" name="email" placeholder="Эл. почта")
+		input(type="tel" name="tel" placeholder="Телефон")
+		input(type="submit" value="Отправить" class="btn btn_primary")
 
 	small
 		| Нажимая кнопку «Отправить» вы соглашаетесь с&nbsp;

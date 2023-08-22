@@ -22,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	const form = document.getElementById("constructor")
 	const singlePriceElement = document.getElementById("single-price")
 	const totalPriceElement = document.getElementById("total-price")
+	const singlePriceInput = document.getElementById("single-price-input")
+	const totalPriceInput = document.getElementById("total-price-input")
 	const countElement = document.getElementById("count")
 
 	const validPrice = (value) => {
@@ -55,8 +57,11 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Обновляем значения в элементах
 		singlePriceElement.textContent = validPrice(singlePrice) + '₽'
 		totalPriceElement.textContent = validPrice(totalPrice) + '₽'
-  }
-  
+
+		singlePriceInput.value = validPrice(singlePrice)
+		totalPriceInput.value = validPrice(totalPrice)
+	}
+
 
 	updatePrices()
 
