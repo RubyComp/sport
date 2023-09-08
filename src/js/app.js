@@ -486,7 +486,28 @@ setTimeout(() => {
 		form.addEventListener('submit', submitForm);
   });
   
-
+  function shuffleImages() {
+	const remixElement = document.querySelector('.shuffled');
+	const imgElements = Array.from(remixElement.querySelectorAll('img'));
+ 
+	// Перемешиваем элементы
+	for (let i = imgElements.length - 1; i > 0; i--) {
+	  const j = Math.floor(Math.random() * (i + 1));
+	  [imgElements[i], imgElements[j]] = [imgElements[j], imgElements[i]];
+	}
+ 
+	// Очищаем содержимое элемента remix
+	remixElement.innerHTML = '';
+ 
+	// Вставляем перемешанные элементы обратно
+	imgElements.forEach((img) => {
+	  remixElement.appendChild(img);
+	});
+ }
+ 
+ // Вызываем функцию для перемешивания изображений при загрузке страницы
+ shuffleImages();
+ 
 
 
 })

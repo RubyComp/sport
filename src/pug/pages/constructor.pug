@@ -117,7 +117,7 @@ block content
 						.file-drop__box#file-drop__box
 							.file-drop__msg Перетащите файлы сюда, чтобы загрузить…
 							.file-drop__btn Выбрать
-							input.file-drop__input(type="file" name="files-design" id="files-design" multiple accept=files)
+							input.file-drop__input(type="file" name="files-design[]" id="files-design" multiple accept=files)
 						.file-drop__note #{files}
 
 				//- fieldset.text-select
@@ -163,14 +163,53 @@ block content
 				fieldset.text-checkboxes.text-checkboxes_footered
 					legend Добавьте к комплектации
 					.text-checkboxes__buttons
-						input(type="checkbox", name="extra-gaiters", id="extra-gaiters" data-cost="490" value="Гетры")
-						label(for="extra-gaiters")
-							span Гетры
-							footer +490₽
-						input(type="checkbox", name="extra-socks", id="extra-socks" data-cost="220" value="Носки")
+
+						//- input(type="checkbox", name="extra-gaiters", id="extra-gaiters" data-cost="490" value="Гетры")
+						//- label(for="extra-gaiters")
+						//- 	span Гетры
+						//- 	footer +490₽
+
+						//- input(type="checkbox", name="extra-socks", id="extra-socks" data-cost="220" value="Носки")
+						//- label(for="extra-socks")
+						//- 	span Носки
+						//- 	footer +220₽
+
+						input(type="checkbox", name="extra-sports-tracksuit", id="extra-sports-tracksuit" data-cost="0" value="sports-tracksuit")
+						label(for="extra-sports-tracksuit")
+							span Тренировочный спортивный костюм
+
+						input(type="checkbox", name="extra-weekend-tracksuit", id="extra-weekend-tracksuit" data-cost="0" value="weekend-tracksuit")
+						label(for="extra-weekend-tracksuit")
+							span Выходной спортивный костюм
+
+						input(type="checkbox", name="extra-sports-t-shirt", id="extra-sports-t-shirt" data-cost="0" value="sports-t-shirt")
+						label(for="extra-sports-t-shirt")
+							span Футболка тренировочная ХБ
+
+						input(type="checkbox", name="extra-polo-shorts-weekend", id="extra-polo-shorts-weekend" data-cost="0" value="polo-shorts-weekend")
+						label(for="extra-polo-shorts-weekend")
+							span Поло и шорты выходные
+
+						input(type="checkbox", name="extra-sports-windbreaker", id="extra-sports-windbreaker" data-cost="0" value="sports-windbreaker")
+						label(for="extra-sports-windbreaker")
+							span Ветровка тренировочная
+
+						input(type="checkbox", name="extra-headdress", id="extra-headdress" data-cost="0" value="headdress")
+						label(for="extra-headdress")
+							span Головной убор
+
+						input(type="checkbox", name="extra-backpack", id="extra-backpack" data-cost="0" value="backpack")
+						label(for="extra-backpack")
+							span Рюкзак
+
+						input(type="checkbox", name="extra-socks", id="extra-socks" data-cost="0" value="socks")
 						label(for="extra-socks")
 							span Носки
-							footer +220₽
+
+						input(type="checkbox", name="extra-gaiters", id="extra-gaiters" data-cost="0" value="gaiters")
+						label(for="extra-gaiters")
+							span Гетры
+
 
 						//- input(type="checkbox", name="extra-bad", id="extra-bad" data-cost="1200")
 						//- label(for="extra-bad")

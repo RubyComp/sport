@@ -620,3 +620,37 @@ button {
 
 
 }
+
+.gallery {
+	display: flex;
+	flex-wrap: wrap;
+	// gap: 1px;
+	justify-content: center;
+	margin-top: 2.5rem;
+
+	img {
+		// height: 400px;
+		flex-grow: 1;
+		object-fit: contain;
+		max-width: 317px;
+		min-width: 317px;
+		min-height: 422px;
+		background-image:url('/resources/images/mini-logo.svg');
+		background-position: center;
+		background-size: 32%;
+		background-repeat: no-repeat;
+	}
+}
+
+.wildberries-btn {
+	background: linear-gradient(to right,#cb11ab 0,#481173 100%) no-repeat;
+	border-radius: 10px;
+	display: inline-block;
+	font-size: 16px;
+	font-weight: bold;
+	letter-spacing: 0.04em;
+	margin: .7rem auto;
+	padding: 1.05rem 2rem 1rem;
+	text-decoration: none;
+	text-transform: uppercase;
+}
