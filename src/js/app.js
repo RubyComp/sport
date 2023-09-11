@@ -439,22 +439,21 @@ setTimeout(() => {
 
 		const form = event.target;
 		const formData = new FormData(form);
-  
+
 		const selectedRadios = form.querySelectorAll('input[type="radio"]:checked');
 		selectedRadios.forEach(radio => {
 			 formData.append(radio.name, radio.value);
 		});
-  
+
 		const selectedCheckboxes = form.querySelectorAll('input[type="checkbox"]:checked');
 		selectedCheckboxes.forEach(checkbox => {
 			 formData.append(checkbox.name, checkbox.value);
 		});
-  
-		const constructorForm = document.querySelector('#constructor'); // Получаем форму #constructor
+
+		const constructorForm = document.querySelector('#constructor');
 		if (constructorForm) {
 			 const constructorFormData = new FormData(constructorForm);
-  
-			 // Переносим данные из формы #constructor в основную форму
+
 			 constructorFormData.forEach((value, key) => {
 				  formData.append(key, value);
 			 });
@@ -471,43 +470,38 @@ setTimeout(() => {
 				newElement.innerHTML ='<div class="sended">Спасибо за вашу заявку!</div>';
 				form.querySelector('input[type="submit"]').insertAdjacentElement('afterend', newElement);
 				form.querySelector('input[type="submit"]').remove();
-				  
-			 } else {
-				  console.log('Произошла ошибка при отправке формы');
-			 }
+	
+			} else {
+				alert('Произошла ошибка при отправке формы')
+			}
 		})
 		.catch(error => {
-			 console.error('Произошла ошибка:', error);
+			alert('Произошла ошибка:', error);
 		});
-  }
-  
-  const forms = document.querySelectorAll('form');
-  forms.forEach(form => {
-		form.addEventListener('submit', submitForm);
-  });
-  
-  function shuffleImages() {
-	const remixElement = document.querySelector('.shuffled');
-	const imgElements = Array.from(remixElement.querySelectorAll('img'));
- 
-	// Перемешиваем элементы
-	for (let i = imgElements.length - 1; i > 0; i--) {
-	  const j = Math.floor(Math.random() * (i + 1));
-	  [imgElements[i], imgElements[j]] = [imgElements[j], imgElements[i]];
 	}
- 
-	// Очищаем содержимое элемента remix
-	remixElement.innerHTML = '';
- 
-	// Вставляем перемешанные элементы обратно
-	imgElements.forEach((img) => {
-	  remixElement.appendChild(img);
-	});
- }
- 
- // Вызываем функцию для перемешивания изображений при загрузке страницы
- shuffleImages();
- 
 
+	const forms = document.querySelectorAll('form');
+	forms.forEach(form => {
+		form.addEventListener('submit', submitForm);
+	});
+
+	function shuffleImages() {
+		const remixElement = document.querySelector('.shuffled');
+		if (!remixElement) return
+		const imgElements = Array.from(remixElement.querySelectorAll('img'));
+
+		for (let i = imgElements.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[imgElements[i], imgElements[j]] = [imgElements[j], imgElements[i]];
+		}
+
+		remixElement.innerHTML = '';
+	
+		imgElements.forEach((img) => {
+		remixElement.appendChild(img);
+		});
+	}
+
+	shuffleImages();
 
 })

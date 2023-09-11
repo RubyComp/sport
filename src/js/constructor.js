@@ -201,27 +201,46 @@ document.addEventListener('DOMContentLoaded', function () {
 		'boxing',
 		'cybersport',
 		'football',
+		'game',
+		'handball',
 		'hockey',
+		'other',
+		'pro',
 		'rugby',
+		'shirt',
 		'struggle',
 		'tennis',
+		'trening',
 		'volleyball',
 	]
 
-	// Получаем значение атрибута "sport" из адресной строки
 	const urlParams = new URLSearchParams(window.location.search);
 	const sportParam = urlParams.get('sport');
 
-	// Проверяем, есть ли значение атрибута "sport" в массиве sports
 	if (sports.includes(sportParam)) {
-		// Формируем путь к картинке с использованием значения атрибута
-		const imageUrl = `/resources/images/products/${sportParam.toLowerCase()}.png`;
+
+		const sport = sportParam.toLowerCase()
+
+		const imageUrl = `/resources/images/products/${sport}.png`;
 		
-		// Находим элемент <img> и обновляем атрибут src
 		const imgElement = document.querySelector('.product-preview__picture img');
 			imgElement.src = imageUrl;
+
+
+
+			const form = document.getElementById('constructor');
+			const input = document.createElement('input');
+
+			input.type = 'hidden';
+			input.id = 'sport';
+			input.name = 'sport';
+			input.value = sport;
+
+			form.appendChild(input);
+
+
+
 	} else {
-		// Если значение атрибута не найдено в массиве sports, задаем картинку по умолчанию
 		const defaultImageUrl = '/resources/images/products/other.png';
 		const imgElement = document.querySelector('.product-preview__picture img');
 		imgElement.src = defaultImageUrl;

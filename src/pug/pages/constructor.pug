@@ -101,12 +101,13 @@ block content
 				fieldset.text-radio
 					legend Требуется разработать дизайн
 					.text-radio__buttons
-						input(type="radio", name="design", id="design-yes" data-cost="0" data-global-cost="2500" value="Требуется дизайн")
+						input(type="radio", name="design", id="design-yes", data-cost="0", data-global-cost="2500", value="Требуется дизайн")
 						label(for="design-yes")
 							span Да
-						input(type="radio", name="design", id="design-no" data-cost="0")
-						label(for="design-no" value="Не требуется дизайн")
+						input(type="radio", name="design", id="design-no", data-cost="0", value="Не требуется дизайн")
+						label(for="design-no")
 							span Нет
+
 					.text-checkboxes__note Стоимость дизайна 2500₽ разово, независимо от количества комплектов.
 
 				fieldset.number
